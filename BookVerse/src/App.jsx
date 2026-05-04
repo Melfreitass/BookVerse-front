@@ -1,9 +1,14 @@
-function OlaMundo() {
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+import Header from './components/Header/Header.jsx'
+
+
+function App() {
     return (
-        <div>
-            <h1>🚀 Olá, React!</h1>
-        </div>
+        <BrowserRouter>
+            <Header />
+        </BrowserRouter>
     );
 }
 
-export default OlaMundo;
+export default App;

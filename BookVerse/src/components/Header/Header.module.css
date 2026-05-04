@@ -1,0 +1,40 @@
+.header {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+.titulo {
+    display: flex;
+    align-items:flex-end;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: center;
+    background-color: rgb(89, 73, 52);
+}
+
+.nav nav{
+    gap: 10px;
+}
+
+a {
+    text-decoration: none;
+    color:aliceblue
+}
+
+.language {
+    display: flex;
+    align-items: center;
+}
+
+.titulo, .language, .nav {
+    color: aliceblue;
+}
