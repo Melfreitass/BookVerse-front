@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+.page {
+    min-height: 100vh;
+    background-color: #0e1320;
+    color: #D3E4FE;
+    font-family: 'Inter', sans-serif;
+}
+
+.main {
+    max-width: 800px;
+    margin: 4rem auto;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.subtitulo {
+    font-size: 0.9rem;
+    color: #EF6855;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    font-family: "Manrope", sans-serif
+}
+
+.tituloPrincipal {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    font-family: "Noto Serif", serif;
+}
+
+.destaque {
+    color: #EF6855;
+}
+
+.texto {
+    font-size: 1rem;
+    color: rgba(193, 197, 220, 0.70);
+    line-height: 1.6;
+    margin-top: 1rem;
+    font-family: "Manrope", sans-serif
+}
