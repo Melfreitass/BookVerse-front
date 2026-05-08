@@ -11,8 +11,9 @@
     min-height: calc(100vh - 90px);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 60px;
+    width: 100%;
 }
 
 .content {
@@ -61,12 +62,115 @@
 }
 
 
+.cardsSection {
+    padding: 80px 0;
+}
+
+.info {
+    margin-bottom: 40px;
+}
+
+.info h3 {
+    color: #d3e4fe;
+    margin-bottom: 10px;
+}
+
+.info p {
+    color: #dfbfba;
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cardGrande {
+    flex: 2;
+    background: #111b34;
+    padding: 30px;
+    border-radius: 20px;
+    border-left: 4px solid #ff6a4a;
+}
+
+.cardGrande span {
+    color: #ff6a4a;
+    font-size: 14px;
+}
+
+.cardGrande h2 {
+    color: white;
+    margin: 20px 0;
+}
+
+.cardGrande p {
+    color: #c8c8d0;
+    line-height: 1.7;
+}
+
+.cardGrande button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #24314f;
+    color: white;
+    cursor: pointer;
+}
+
+.cardPequeno {
+    flex: 1;
+    background: #111b34;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.cardPequeno h3 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.cardPequeno p {
+    color: #c8c8d0;
+    line-height: 1.7;
+}
+
+.cardBaixo {
+    width: 260px;
+    background: #111b34;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.cardBaixo span {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 106, 74, 0.12);
+    color: #ff6a4a;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.cardBaixo h3 {
+    color: white;
+    margin-bottom: 16px;
+}
+
+.cardBaixo p {
+    color: #c8c8d0;
+    line-height: 1.7;
+}
+
+
 @media (max-width: 900px) {
 
     .home {
         flex-direction: column;
+
         text-align: center;
-        padding: 60px ;
+
+        padding: 60px 0;
     }
 
 }
