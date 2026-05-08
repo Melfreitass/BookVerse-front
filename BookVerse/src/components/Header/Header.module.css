@@ -1,16 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Manrope:wght@200..800&display=swap');
+
 .header {
-    background-color: black;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
     padding-right: 40px;
     padding-left: 40px;
+    border-bottom: 1.4px solid rgba(240, 248, 255, 0.2);
 }
 
 .titulo {
     display: flex;
     align-items:flex-end;
+    font-family: "Abhaya Libre", serif;
+    font-weight: 700;
+    font-size: 20px;
 }
 
 .nav {
@@ -18,23 +23,39 @@
     align-items: center;
     width: 40%;
     justify-content: center;
-    background-color: rgb(89, 73, 52);
+    font-family: "Manrope", serif;
+    font-size: 14px;
 }
 
 .nav nav{
-    gap: 10px;
+    display: flex;
+    gap: 100px;
 }
 
-a {
+.anav {
     text-decoration: none;
-    color:aliceblue
+    color:rgba(240, 248, 255, 0.726);
+    transition: 0.3s;
+    border-bottom: 2px solid transparent;
+}
+
+.anav:hover {
+    color: #EF6855;
+}
+
+.active {
+    color: #EF6855;
+    border-bottom: 2px solid #EF6855;
+}
+
+.atitulo {
+    text-decoration: none;
+    color:rgb(255, 255, 255)
 }
 
 .language {
     display: flex;
     align-items: center;
-}
-
-.titulo, .language, .nav {
+    font-family: "Abhaya Libre", serif;
     color: aliceblue;
 }
