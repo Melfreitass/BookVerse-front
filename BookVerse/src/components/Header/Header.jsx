@@ -5,7 +5,7 @@ function Header() {
     return (
         <header className={styles.header}>
             <div className={styles.titulo}>
-                <NavLink to="/Home" className={styles.atitulo}>
+                <NavLink to="/" className={styles.atitulo}>
                     BOOKVERSE
                 </NavLink>
             </div>
