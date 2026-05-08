@@ -19,16 +19,12 @@ function Home() {
                     <div className={styles.botao}>
                         <NavLink
                             to="/obraPrincipal"
-                            className={({ isActive }) =>
-                                isActive ? `${styles.anav} ${styles.active}` : styles.anav
-                            }>
+                            className={styles.botaoLivro}>
                             Ver livro
                         </NavLink>
                         <NavLink
                             to="/biblioteca"
-                            className={({ isActive }) =>
-                                isActive ? `${styles.anav} ${styles.active}` : styles.anav
-                            }>
+                            className={styles.botaoBiblioteca}>
                             Ver Biblioteca
                         </NavLink>
                     </div>

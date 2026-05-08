@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
 .home {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    padding-top: 100px;
+    padding-top: 150px;
 }
 
 .inicio {
     color:aliceblue;
-    background-color: rgb(50, 152, 241);
     display: flex;
     align-items: center;
     justify-content:space-between;
@@ -16,6 +18,64 @@
 }
 
 .info {
+    width: 60%;
+    display:flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+
+}
+
+.texto {
+    display:flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;  
+}
+
+.info1 {
+    color: #EF6855;
+    font-family: "Manrope", serif;
+    font-weight: 400;
+}
+
+.titulo {
+    font-family: "Noto Serif", serif;
+    font-size: 38px;
+    font-weight: 650;
+}
+
+.descricao {
+    width: 70%;
+    font-family: "Manrope", serif;
+    font-weight: 350;
+}
+
+.botao {
+    display: flex;
+    gap: 30px;
     width: 50%;
-    
+    height: 10%;
+}
+
+.botaoLivro {
+    font-family: "Manrope", serif;
+    text-decoration: none;
+    color:rgb(255, 255, 255);
+    background-color: #EF6855;
+    border-radius: 8px;
+    width: 35%;
+    height: 40px;
+}
+
+.botaoBiblioteca {
+    font-family: "Manrope", serif;
+    text-decoration: none;
+    color:rgb(255, 255, 255);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    width: 35%;
+    height: 40px;
 }
