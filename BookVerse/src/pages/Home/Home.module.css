@@ -5,7 +5,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 100px;
     flex-direction: column;
 }
 
@@ -15,9 +14,9 @@
     align-items: center;
     justify-content:space-between;
     flex-direction:row;
-    margin-bottom: 60px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .info {
@@ -27,7 +26,6 @@
     justify-content: center;
     flex-direction: column;
     gap: 30px;
-
 }
 
 .texto {
@@ -54,7 +52,7 @@
 
 .descricao {
     color: aliceblue;
-    width: 70%;
+    width: 60%;
     font-family: "Manrope", serif;
     font-weight: 350;
     font-size: 14px;
@@ -95,6 +93,16 @@
 
 .botaoLivro:hover {
     background-color: #c64d3a;
+}
+
+.foto {
+    display: flex;
+    align-items: baseline;
+    justify-content: baseline;
+}
+
+img {
+    width: 90%
 }
 
 .infos {
@@ -178,3 +186,4 @@ p {
 .iconGarantia {
     stroke:  #EF6855;
 }
+

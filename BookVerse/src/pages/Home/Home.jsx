@@ -1,6 +1,7 @@
 import styles from './Home.module.css';
 import { NavLink } from 'react-router-dom';
 import { BadgeCheck, BookOpenCheck, BrainCog, Dices } from 'lucide-react';
+import livroImg from '../../assets/livroPrincipal.png'
 
 function Home() {
     return (
@@ -31,7 +32,9 @@ function Home() {
                     </div>
                 </div>
 
-                <div className={styles.foto}>❤️</div>
+                <div className={styles.foto}>
+                    <img src={livroImg} alt="Livro" />
+                </div>
 
                 <div className={styles.foto}></div>
             </section>
