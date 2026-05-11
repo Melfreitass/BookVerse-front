@@ -5,8 +5,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    padding-top: 150px;
+    padding-top: 100px;
+    flex-direction: column;
 }
 
 .inicio {
@@ -15,6 +15,9 @@
     align-items: center;
     justify-content:space-between;
     flex-direction:row;
+    margin-bottom: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .info {
@@ -39,18 +42,22 @@
     color: #EF6855;
     font-family: "Manrope", serif;
     font-weight: 400;
+    font-size: 0.9rem;
 }
 
 .titulo {
+    color: aliceblue;
     font-family: "Noto Serif", serif;
-    font-size: 38px;
+    font-size: 2.5rem;
     font-weight: 650;
 }
 
 .descricao {
+    color: aliceblue;
     width: 70%;
     font-family: "Manrope", serif;
     font-weight: 350;
+    font-size: 14px;
 }
 
 .botao {
@@ -61,21 +68,113 @@
 }
 
 .botaoLivro {
-    font-family: "Manrope", serif;
-    text-decoration: none;
-    color:rgb(255, 255, 255);
     background-color: #EF6855;
-    border-radius: 8px;
-    width: 35%;
-    height: 40px;
 }
 
 .botaoBiblioteca {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.botaoBiblioteca, .botaoLivro {
     font-family: "Manrope", serif;
     text-decoration: none;
     color:rgb(255, 255, 255);
-    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
-    width: 35%;
+    width: 40%;
     height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.botaoBiblioteca:hover{
+    color: #EF6855;
+    border-color: #EF6855;
+}
+
+.botaoLivro:hover {
+    background-color: #c64d3a;
+}
+
+.infos {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 50px;
+}
+
+.garantia {
+    background: rgba(20, 30, 50, 0.6);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+    padding: 20px;
+    transition: 0.3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.biblioteca {
+    background-image: 
+    linear-gradient(
+            rgba(10, 15, 30, 0.75),
+            rgba(10, 15, 30, 0.75)
+        ),
+        url('../../assets/biblioteca.webp');
+
+        background-size: cover;
+        background-size: center;
+    ;
+}
+
+.gabaritado {
+    background-image: 
+    linear-gradient(
+            rgba(10, 15, 30, 0.75),
+            rgba(10, 15, 30, 0.75)
+        ),
+        url('../../assets/livros.jpg');
+
+        background-size: cover;
+        background-size: center;
+    ;
+}
+
+h2 {
+    font-family: "Noto Serif", serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: aliceblue;
+}
+
+p {
+    color: rgba(240, 248, 255, 0.71);
+    font-family: "Manrope", serif;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.garantia:hover {
+    transform:scale(1.01);
+}
+
+.iconCircle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(239, 104, 85, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconGarantia {
+    stroke:  #EF6855;
 }
