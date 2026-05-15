@@ -1,7 +1,7 @@
 import styles from './Header.module.css';
 import { NavLink } from 'react-router-dom';
 
-function Header() {
+function Header({ idioma, setIdioma}) {
     return (
         <header className={styles.header}>
             <div className={styles.titulo}>
@@ -47,7 +47,8 @@ function Header() {
             </div>
 
             <div className={styles.language}>
-                <p>PT | EN</p>
+                <button onClick={() => setIdioma("pt")}>PT</button>
+                <button onClick={() => setIdioma("en")}>EN</button>
             </div>
         </header>
     );
