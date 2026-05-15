@@ -1,113 +1,33 @@
 import styles from './Sobre.module.css';
 import escritorio from '../../assets/escritorio.png';
 
+import { useEffect, useState } from 'react';
+
+import { buscarMembros } from '../../services/api';
+
 function Sobre() {
-    const equipe = [
-        {
-            id: 1,
-            nome: 'Melissa Freitas',
-            funcao: 'Gerente de Projeto / Dev Frontend',
-            descricao:
-                'Responsável pela organização do projeto, documentação e desenvolvimento da interface.',
-            foto: 'https://i.pravatar.cc/300?img=1',
-        },
+    const [membro, setMembros] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-        {
-            id: 2,
-            nome: 'Gustavo Alves',
-            funcao: 'Desenvolvedor Backend',
-            descricao: 'Responsável pela API REST e integração com banco de dados.',
-            foto: 'https://i.pravatar.cc/300?img=2',
-        },
+    useEffect(() => {
+        async function carregarMembro() {
+            try {
+                const membroData = await buscarMembros();
 
-        {
-            id: 3,
-            nome: 'Felipe Antunes',
-            funcao: 'Desenvolvedor Frontend',
-            descricao: 'Responsável pela criação das páginas e componentes do sistema.',
-            foto: 'https://i.pravatar.cc/300?img=3',
-        },
+                setMembros(membroData);
+            } catch (error) {
+                console.error('Erro ao carregar equipe:', error);
+            } finally {
+                setLoading(false);
+            }
+        }
 
-        {
-            id: 4,
-            nome: 'Isabela Duetes',
-            funcao: 'Equipe de Conteúdo',
-            descricao: 'Responsável pela produção de conteúdos literários.',
-            foto: 'https://i.pravatar.cc/300?img=4',
-        },
+        carregarMembro();
+    }, []);
 
-        {
-            id: 5,
-            nome: 'Luana Follegati',
-            funcao: 'Equipe de Conteúdo',
-            descricao: 'Responsável pela revisão e adaptação dos textos.',
-            foto: 'https://i.pravatar.cc/300?img=5',
-        },
-
-        {
-            id: 6,
-            nome: 'Leticia Gomes',
-            funcao: 'Equipe de Conteúdo',
-            descricao: 'Responsável pelas análises literárias e pesquisas.',
-            foto: 'https://i.pravatar.cc/300?img=6',
-        },
-
-        {
-            id: 7,
-            nome: 'Anna Clara Faria',
-            funcao: 'Equipe de Conteúdo',
-            descricao: 'Responsável pelos conteúdos em inglês.',
-            foto: 'https://i.pravatar.cc/300?img=7',
-        },
-
-        {
-            id: 8,
-            nome: 'Heloisa Rodrigues',
-            funcao: 'Equipe de Conteúdo',
-            descricao: 'Responsável pelas curiosidades e contexto histórico.',
-            foto: 'https://i.pravatar.cc/300?img=8',
-        },
-
-        {
-            id: 9,
-            nome: 'Rafael Fahl',
-            funcao: 'Equipe de Conteúdo',
-            descricao: 'Responsável pela validação pedagógica do conteúdo.',
-            foto: 'https://i.pravatar.cc/300?img=9',
-        },
-
-        {
-            id: 10,
-            nome: 'Vitor Barbosa',
-            funcao: 'Equipe de Conteúdo',
-            descricao: 'Responsável pela organização dos materiais de estudo.',
-            foto: 'https://i.pravatar.cc/300?img=10',
-        },
-
-        {
-            id: 11,
-            nome: 'Felipe Jardim',
-            funcao: 'Orientador Técnico',
-            descricao: 'Responsável pelo acompanhamento técnico do projeto.',
-            foto: 'https://i.pravatar.cc/300?img=11',
-        },
-
-        {
-            id: 12,
-            nome: 'Breno Belmonte',
-            funcao: 'Orientador Técnico',
-            descricao: 'Responsável pelo suporte técnico e revisão do sistema.',
-            foto: 'https://i.pravatar.cc/300?img=12',
-        },
-
-        {
-            id: 13,
-            nome: 'Maria Luiza Barbosa',
-            funcao: 'Equipe de Conteúdo',
-            descricao: 'Responsável pela organização textual e revisão final.',
-            foto: 'https://i.pravatar.cc/300?img=13',
-        },
-    ];
+    if (loading) {
+        return <p className={styles.loading}>Carregando equipe...</p>;
+    }
 
     return (
         <div className={styles.page}>
@@ -194,7 +114,7 @@ function Sobre() {
                     </div>
 
                     <div id="equipeScroll" className={styles.equipeGrid}>
-                        {equipe.map((membro) => (
+                        {membro.map((membro) => (
                             <div key={membro.id} className={styles.cardEquipe}>
                                 <div className={styles.cardImagemContainer}>
                                     <img
