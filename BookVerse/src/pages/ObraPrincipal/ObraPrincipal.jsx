@@ -1,17 +1,64 @@
 import styles from "./ObraPrincipal.module.css";
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom"
 import { FaPlay, FaBookOpen, FaBrain, FaArrowRight } from "react-icons/fa";
+import { buscarLivros, buscarPersonagem, buscarCuriosidades, buscarSimulados } from "../../services/api"
 
-import livros from "../../data/livros.js";
-import personagens from "../../data/personagens.js";
-import curiosidades from "../../data/curiosidades.js";
-import simulados from "../../data/simulados.js";
+function ObraPrincipal({ idioma }) {
+    const [livro, setLivro] = useState(null)
+    const [personagem, setPersonagem] = useState([]);
+    const [curiosidades, setCuriosidades] = useState([]);
+    const [simulados, setSimulados] = useState([]);
 
-const livro = livros[0];
+    useEffect(() => {
+        async function carregarDados() {
+            try {
 
+                //livro
+                const livrosData =
+                    await buscarLivros();
 
+                setLivro(livrosData[0]);
 
-function ObraPrincipal({idioma}) {
+                //personagem
+                const personagemData =
+                   await buscarPersonagem();
+
+                setPersonagem(personagemData);
+
+                //livro
+                const curiosidadesData =
+                   await buscarCuriosidades();
+
+               setCuriosidades(curiosidadesData);
+
+                //simulados
+                const simuladosData =
+                    await buscarSimulados();
+
+                setSimulados(simuladosData);
+
+            }
+
+            catch (error) {
+                console.error(
+                    "Erro ao carregar dados:",
+                    error
+                );
+            }
+        }
+
+        carregarDados();
+    }, []);
+
+    if (!livro) {
+        return (
+            <p className={styles.loading}>
+                Carregando...
+            </p>
+        );
+    }
+
   return (
     <home className={styles.obraPrincipal}>
       <section className={styles.infoPrincipal}>
