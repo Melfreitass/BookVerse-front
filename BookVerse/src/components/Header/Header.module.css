@@ -56,6 +56,27 @@
 .language {
     display: flex;
     align-items: center;
-    font-family: "Abhaya Libre", serif;
+    gap: 0.8rem
+}
+
+.language button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: "Manrope", sans-serif;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.ativo {
+    color: #EF6855;
+    font-weight: 700;
+}
+
+.desativado {
     color: aliceblue;
+}
+
+.desativado:hover {
+    color: rgba(255,255,255,0.8);
 }
