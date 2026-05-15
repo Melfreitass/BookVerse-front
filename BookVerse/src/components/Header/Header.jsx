@@ -47,8 +47,19 @@ function Header({ idioma, setIdioma}) {
             </div>
 
             <div className={styles.language}>
-                <button onClick={() => setIdioma("pt")}>PT</button>
-                <button onClick={() => setIdioma("en")}>EN</button>
+                <button
+                    className={idioma === 'pt' ? styles.ativo : styles.desativado}
+                    onClick={() => setIdioma('pt')}>
+                    PT
+                </button>
+
+                <p>|</p>
+
+                <button
+                    className={idioma === 'en' ? styles.ativo : styles.desativado}
+                    onClick={() => setIdioma('en')}>
+                    EN
+                </button>
             </div>
         </header>
     );
