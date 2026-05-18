@@ -50,7 +50,12 @@
 
 .atitulo {
     text-decoration: none;
-    color:rgb(255, 255, 255)
+    color:rgb(255, 255, 255);
+    transition: 0.3s;
+}
+
+.atitulo:hover {
+    color:#EF6855;
 }
 
 .language {
