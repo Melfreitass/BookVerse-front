@@ -1,131 +1,223 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 
-.page {
+.obraPrincipal {
+    width: 100%;
     min-height: 100vh;
-    background: #0B1220;
-    color: #D3E4FE;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 6rem 1rem;
+    background-color: #121214; /* Mantendo fundo escuro para contraste */
+}
+
+.infoPrincipal {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+}
+
+.titulo {
+    font-size: 6rem;
+    line-height: 1.1;
+    font-family: "Noto Serif", serif;
+    color: aliceblue;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.subtitulo {
+    color: #EF6855;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.linha {
+    width: 60px;
+    height: 4px;
+    background-color: #EF6855;
+    border-radius: 9px;
+}
+
+.frase {
+    color: rgba(240, 248, 255, 0.6);
+    text-align: center;
+    max-width: 500px;
+    font-size: 0.95rem;
     font-family: "Manrope", sans-serif;
 }
 
-.main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 3rem 2rem 5rem;
+/* Cards */
+.resumoArea {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
 }
 
-.topo {
+.resumoCard {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 3rem;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 2.5rem;
+    flex-direction: column;
     gap: 2rem;
 }
 
-.tag {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    border-radius: 30px;
-    background: rgba(239, 104, 85, 0.12);
-    border: 1px solid rgba(239, 104, 85, 0.25);
-    color: #EF6855;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
+.resumoHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
 }
 
-.topo h1 {
-    font-size: 1.8rem;
+.resumoTitulo {
+    color: aliceblue;
     font-family: "Noto Serif", serif;
-    font-weight: 500;
-    color: #D3E4FE;
+    font-size: 1.5rem;
 }
 
-.infoQuestao {
-    text-align: right;
+.infoLivro {
+    display: flex;
+    gap: 1rem;
 }
 
-.infoQuestao p {
-    color: rgba(211, 228, 254, 0.5);
-    font-size: 0.75rem;
+.infoBox {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.2rem;
+    text-align: center;
+}
+
+.infoBox span {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.7rem;
     letter-spacing: 2px;
+    font-family: "Manrope", sans-serif;
+    display: block;
     margin-bottom: 0.5rem;
 }
 
-.infoQuestao span {
-    color: #EF6855;
-    font-size: 1rem;
+.infoBox p {
+    color: white;
+    font-family: "Manrope", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
-.botoes {
+/* Gráfico */
+.graficoContainer {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
-.botaoSecundario {
-    background: transparent;
+.centroGrafico {
+    position: absolute;
+    text-align: center;
+}
+
+.porcentagemTexto {
+    font-size: 2.5rem;
+    font-family: "Noto Serif", serif;
+    color: #EF6855;
+    font-weight: 700;
+}
+
+.labelCentro {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Botões */
+.botaoRefazer {
+    background-color: #EF6855;
+    color: white;
     border: none;
-    color: rgba(211, 228, 254, 0.5);
+    padding: 1.2rem;
+    border-radius: 12px;
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
     cursor: pointer;
-    font-size: 0.9rem;
     transition: 0.3s;
 }
 
-.botaoSecundario:hover {
-    color: #D3E4FE;
+.botaoRefazer:hover {
+    background-color: #d45645;
+    transform: translateY(-2px);
 }
 
-.botaoPrincipal {
-    background: linear-gradient(135deg, #EF6855, #FF866C);
-    border: none;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 14px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s ease;
-    box-shadow: 0 0 25px rgba(239, 104, 85, 0.3);
-}
-
-.botaoPrincipal:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 35px rgba(239, 104, 85, 0.45);
-}
-
-.resultado {
-    margin-top: 2rem;
+.botoesNavegacao {
     display: flex;
-    gap: 2rem;
-    align-items: center;
-    color: #D3E4FE;
-    font-size: 1rem;
-    font-family: "Manrope", sans-serif;
+    justify-content: space-between;
+    margin-top: 1rem;
+    gap: 1rem;
 }
 
-@media (max-width: 900px) {
+.btnPrincipal {
+    background-color: #EF6855;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
 
-    .topo {
-        flex-direction: column;
-    }
+.btnSecundario {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: aliceblue;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Alerta Pendentes */
+.alertaPendentes {
+    width: 100%;
+    background: rgba(239, 104, 85, 0.1);
+    border: 1px solid #EF6855;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.listaPendentes {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.botaoVoltarPendente {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
-
-    .main {
-        padding: 2rem 1rem 4rem;
-    }
-
-    .topo h1 {
-        font-size: 1.4rem;
-    }
-
-    .botoes {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .botaoPrincipal {
-        width: 100%;
-    }
+    .titulo { font-size: 3rem; }
+    .resumoCard { padding: 1.5rem; }
+    .infoLivro { flex-direction: column; }
 }

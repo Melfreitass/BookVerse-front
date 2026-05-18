@@ -1,166 +1,200 @@
 import styles from './Simulados.module.css';
-
 import { useEffect, useState } from 'react';
-
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import CardQuestao from '../../components/CardQuestao/CardQuestao';
-
 import { buscarSimulados } from '../../services/api';
 
 function Simulados() {
     const [simulados, setSimulados] = useState([]);
-
     const [questaoAtual, setQuestaoAtual] = useState(0);
-
     const [erro, setErro] = useState(false);
-
     const [respostas, setRespostas] = useState({});
+    const [concluido, setConcluido] = useState(false);
+    const [questoesPendentes, setQuestoesPendentes] = useState([]);
 
     useEffect(() => {
         async function carregarDados() {
             try {
                 const simuladosData = await buscarSimulados();
-
                 setSimulados(simuladosData);
             } catch (error) {
                 console.error('Erro ao carregar simulados:', error);
-
                 setErro(true);
             }
         }
-
         carregarDados();
     }, []);
 
-    function responderQuestao(idQuestao, resposta) {
-        setRespostas((prev) => ({
-            ...prev,
-
-            [idQuestao]: resposta,
-        }));
-    }
-
-    function proximaQuestao() {
-        if (questaoAtual < simulados.length - 1) {
-            setQuestaoAtual(questaoAtual + 1);
-        }
-    }
-
-    function voltarQuestao() {
-        if (questaoAtual > 0) {
-            setQuestaoAtual(questaoAtual - 1);
-        }
-    }
+    const responderQuestao = (idQuestao, resposta) => {
+        setRespostas((prev) => ({ ...prev, [idQuestao]: resposta }));
+        setQuestoesPendentes((prev) => prev.filter((q) => q.id !== idQuestao));
+    };
 
     const totalAcertos = Object.values(respostas).filter((item) => item.acertou).length;
-
     const totalErros = Object.values(respostas).filter((item) => !item.acertou).length;
+    const porcentagemAcerto =
+        simulados.length > 0 ? Math.round((totalAcertos / simulados.length) * 100) : 0;
 
-    if (erro) {
-        return <p className={styles.loading}>Erro ao carregar simulados</p>;
-    }
+    const tentarFinalizar = () => {
+        const pendentes = simulados
+            .map((q, index) => ({ id: q.id, index }))
+            .filter((q) => !respostas[q.id]);
 
-    if (!simulados || simulados.length === 0) {
+        if (pendentes.length > 0) {
+            setQuestoesPendentes(pendentes);
+        } else {
+            setConcluido(true);
+        }
+    };
+
+    if (erro) return <p className={styles.loading}>Erro ao carregar simulados</p>;
+    if (!simulados || simulados.length === 0)
         return <p className={styles.loading}>Carregando...</p>;
+
+    if (concluido) {
+        return (
+            <div className={styles.obraPrincipal}>
+                <div className={styles.infoPrincipal}>
+                    <h2 className={styles.subtitulo}>DESEMPENHO FINAL</h2>
+                    <div className={styles.linha}></div>
+                    <h1 className={styles.titulo}>Simulado Concluído</h1>
+                </div>
+
+                <div className={styles.resumoArea}>
+                    <div className={styles.resumoCard}>
+                        <div className={styles.resumoHeader}>
+                            <span className={styles.iconResumo}>📊</span>
+                            <h3 className={styles.resumoTitulo}>Estatísticas Gerais</h3>
+                        </div>
+
+                        <div className={styles.graficoSection}>
+                            <div className={styles.graficoContainer}>
+                                <ResponsiveContainer width="100%" height={220}>
+                                    <PieChart>
+                                        <Pie
+                                            data={[
+                                                { name: 'Acertos', value: totalAcertos },
+                                                { name: 'Erros', value: totalErros },
+                                            ]}
+                                            innerRadius={65}
+                                            outerRadius={85}
+                                            stroke="none"
+                                            paddingAngle={8}
+                                            dataKey="value"
+                                            startAngle={90}
+                                            endAngle={-270}>
+                                            <Cell fill="#EF6855" /> {/* Coral padrão */}
+                                            <Cell fill="rgba(255,255,255,0.1)" />
+                                        </Pie>
+                                    </PieChart>
+                                </ResponsiveContainer>
+                                <div className={styles.centroGrafico}>
+                                    <span className={styles.porcentagemTexto}>
+                                        {porcentagemAcerto}%
+                                    </span>
+                                    <p className={styles.labelCentro}>aproveitamento</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={styles.infoLivro}>
+                            <div className={styles.infoBox}>
+                                <span>TOTAL</span>
+                                <p>{simulados.length} Questões</p>
+                            </div>
+                            <div className={styles.infoBox}>
+                                <span>ACERTOS</span>
+                                <p style={{ color: '#EF6855' }}>{totalAcertos}</p>
+                            </div>
+                        </div>
+
+                        <button
+                            className={styles.botaoRefazer}
+                            onClick={() => window.location.reload()}>
+                            RECOMEÇAR JORNADA
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
     }
 
     return (
-        <div className={styles.page}>
-            <main className={styles.main}>
-                <div className={styles.topo}>
-                    <div>
-                        <span className={styles.tag}>SIMULADO ENEM 2024</span>
+        <div className={styles.obraPrincipal}>
+            <div className={styles.infoPrincipal}>
+                <h2 className={styles.subtitulo}>SIMULADO ENEM 2024</h2>
+                <div className={styles.linha}></div>
+                <h1 className={styles.titulo} style={{ fontSize: '4rem' }}>
+                    Ciências da Natureza
+                </h1>
+                <p className={styles.frase}>
+                    Questão {questaoAtual + 1} de {simulados.length}
+                </p>
+            </div>
 
-                        <h1>Ciências da Natureza e suas Tecnologias</h1>
+            <div
+                className={styles.resumoArea}
+                style={{ marginTop: '4rem', flexDirection: 'column' }}>
+                {questoesPendentes.length > 0 && (
+                    <div className={styles.alertaPendentes}>
+                        <p>⚠️ Resolva antes de finalizar:</p>
+                        <div className={styles.listaPendentes}>
+                            {questoesPendentes.map((q) => (
+                                <button
+                                    key={q.id}
+                                    className={styles.botaoVoltarPendente}
+                                    onClick={() => {
+                                        setQuestaoAtual(q.index);
+                                        setQuestoesPendentes([]);
+                                    }}>
+                                    Q{q.index + 1}
+                                </button>
+                            ))}
+                        </div>
                     </div>
+                )}
 
-                    <div className={styles.infoQuestao}>
-                        <p>
-                            QUESTÃO {questaoAtual + 1} DE {simulados.length}
-                        </p>
-                    </div>
-                </div>
-
-                <CardQuestao
-                    pergunta={simulados[questaoAtual].pergunta_pt}
-                    alternativas={[
-                        {
-                            id: 'A',
-                            texto: simulados[questaoAtual].opcao_a,
-                        },
-
-                        {
-                            id: 'B',
-                            texto: simulados[questaoAtual].opcao_b,
-                        },
-
-                        {
-                            id: 'C',
-                            texto: simulados[questaoAtual].opcao_c,
-                        },
-
-                        {
-                            id: 'D',
-                            texto: simulados[questaoAtual].opcao_d,
-                        },
-                    ]}
-                    correta={simulados[questaoAtual].resposta_correta}
-                    explicacao={simulados[questaoAtual].explicacao_pt}
-                    dica={'Leia atentamente o enunciado.'}
-                    respostaSelecionada={respostas[simulados[questaoAtual].id]?.resposta}
-                    aoResponder={(resposta) =>
-                        responderQuestao(
-                            simulados[questaoAtual].id,
-
-                            {
+                <div className={styles.resumoCard} style={{ width: '100%', gap: '1rem' }}>
+                    <CardQuestao
+                        pergunta={simulados[questaoAtual].pergunta_pt}
+                        alternativas={[
+                            { id: 'A', texto: simulados[questaoAtual].opcao_a },
+                            { id: 'B', texto: simulados[questaoAtual].opcao_b },
+                            { id: 'C', texto: simulados[questaoAtual].opcao_c },
+                            { id: 'D', texto: simulados[questaoAtual].opcao_d },
+                        ]}
+                        correta={simulados[questaoAtual].resposta_correta}
+                        explicacao={simulados[questaoAtual].explicacao_pt}
+                        dica={'Analise as variáveis com cuidado.'}
+                        respostaSelecionada={respostas[simulados[questaoAtual].id]?.resposta}
+                        aoResponder={(resposta) =>
+                            responderQuestao(simulados[questaoAtual].id, {
                                 resposta,
-
                                 acertou:
                                     resposta ===
                                     simulados[questaoAtual].resposta_correta.toUpperCase(),
-                            },
-                        )
-                    }
-                />
+                            })
+                        }
+                    />
 
-                <div className={styles.botoes}>
-                    <button className={styles.botaoSecundario} onClick={voltarQuestao}>
-                        ← ANTERIOR
-                    </button>
-
-                    <button
-                        className={styles.botaoPrincipal}
-                        onClick={() => {
-                            const respostaAtual = respostas[simulados[questaoAtual].id];
-
-                            if (!respostaAtual) {
-                                alert('⚠️ Responda a questão antes de continuar.');
-
-                                return;
-                            }
-
-                            if (questaoAtual === simulados.length - 1) {
-                                alert(
-                                    `Simulado concluído!
-
-                                    Acertos: ${totalAcertos}
-                                    Erros: ${totalErros}`,
-                                );
-
-                                return;
-                            }
-
-                            proximaQuestao();
-                        }}>
-                        PRÓXIMA QUESTÃO →
-                    </button>
+                    <div className={styles.botoesNavegacao}>
+                        <button
+                            className={styles.btnSecundario}
+                            onClick={() => questaoAtual > 0 && setQuestaoAtual(questaoAtual - 1)}>
+                            ANTERIOR
+                        </button>
+                        <button
+                            className={styles.btnPrincipal}
+                            onClick={() =>
+                                questaoAtual === simulados.length - 1
+                                    ? tentarFinalizar()
+                                    : setQuestaoAtual(questaoAtual + 1)
+                            }>
+                            {questaoAtual === simulados.length - 1 ? 'FINALIZAR' : 'PRÓXIMA'}
+                        </button>
+                    </div>
                 </div>
-
-                <div className={styles.resultado}>
-                    <p>Acertos: {totalAcertos}</p>
-
-                    <p>Erros: {totalErros}</p>
-                </div>
-            </main>
+            </div>
         </div>
     );
 }

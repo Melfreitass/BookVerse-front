@@ -6,7 +6,6 @@ export default function CardQuestao({
     alternativas,
     correta,
     explicacao,
-    dica,
     respostaSelecionada,
     aoResponder
 
