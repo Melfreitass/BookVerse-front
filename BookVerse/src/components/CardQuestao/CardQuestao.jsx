@@ -90,17 +90,6 @@ export default function CardQuestao({
                             {explicacao}
                         </p>
 
-                        <div className={styles.dica}>
-
-                            <strong>
-                                DICA DE OURO
-                            </strong>
-
-                            <span>
-                                {dica}
-                            </span>
-
-                        </div>
 
                     </div>
 
