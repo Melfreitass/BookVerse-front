@@ -60,7 +60,7 @@ function ObraPrincipal({ idioma }) {
     }
 
   return (
-    <home className={styles.obraPrincipal}>
+    <main className={styles.obraPrincipal}>
       <section className={styles.infoPrincipal}>
         <div className={styles.bgTitulo}>
             <h1 className={styles.titulo}>
@@ -80,7 +80,65 @@ function ObraPrincipal({ idioma }) {
           </p>
         </div>
       </section>
-    </home>
+
+      <section className={styles.resumoArea}>
+        <div className={styles.resumoCard}>
+            <div className={styles.resumoHeader}>
+                <FaBookOpen className={styles.iconResumo} />
+
+                <div>
+                    <h3 className={styles.resumoTitulo}>
+                        {idioma ==="pt" ? "Resumo Dinâmico" : "Dynamic Summary"}
+                    </h3>
+                </div>
+            </div>
+
+            <p className={styles.resumoTexto}>
+                {
+                    idioma === "pt" ? livro.enredo_pt || "Sem resumo disponível" : livro.enredo_en || "No summary available"
+                }
+            </p>
+
+            <div className={styles.infoLivro}>
+                <div className={styles.infoBox}>
+                    <span>
+                        {idioma === "pt" ? "GÊNERO" : "GENRE"}
+                    </span>
+
+                    <p>
+                        { idioma === "pt" ? livro.genero_pt : livro.genero_en
+                        }
+                    </p>
+                </div>
+
+                <div className={styles.infoBox}>
+                    <span>
+                        {idioma === "pt" ? "ANO" : "YEAR"}
+                    </span>
+
+                    <p>{livro.ano}</p>
+                </div>
+
+                <div className={styles.infoBox}>
+                    <span>
+                        {idioma === "pt" ? "MOVIMENTO" : "MOVEMENT"}
+                    </span>
+
+                    <p>
+                        {
+                            idioma === "pt" ? livro.movimento_pt : livro.movimento_en
+                        }
+                </p>
+                </div>
+            </div>
+        </div>
+
+        <div className={styles.capaLivro}>
+            <img src={livro.capa_url} alt={livro.titulo} />
+        </div>
+
+      </section>
+    </main>
   );
 }
 
