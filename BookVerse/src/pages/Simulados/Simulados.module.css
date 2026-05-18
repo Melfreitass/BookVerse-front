@@ -93,6 +93,16 @@
     box-shadow: 0 0 35px rgba(239, 104, 85, 0.45);
 }
 
+.resultado {
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    color: #D3E4FE;
+    font-size: 1rem;
+    font-family: "Manrope", sans-serif;
+}
+
 @media (max-width: 900px) {
 
     .topo {
