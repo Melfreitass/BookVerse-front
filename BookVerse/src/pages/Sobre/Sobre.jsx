@@ -1,3 +1,4 @@
+
 import styles from "./Sobre.module.css";
 import escritorio from "../../assets/escritorio.png";
 import { useEffect, useState, useRef } from "react";
@@ -175,6 +176,7 @@ function Sobre() {
       </main>
     </div>
   );
+
 }
 
 export default Sobre;

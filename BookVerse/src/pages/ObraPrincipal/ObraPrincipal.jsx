@@ -62,12 +62,18 @@ function ObraPrincipal({ idioma }) {
   return (
     <home className={styles.obraPrincipal}>
       <section className={styles.infoPrincipal}>
+        <div className={styles.bgTitulo}>
+            <h1 className={styles.titulo}>
+                {livro.titulo.toUpperCase()}
+            </h1>
+        </div>
+
         <div className={styles.infoTitulo}>
           <p className={styles.subtitulo}>
             {idioma === "pt" ? "LIVRO PRINCIPAL" : "MAIN BOOK"}
           </p>
 
-          <h1 className={styles.titulo}>{livro.titulo}</h1>
+          <div className={styles.linha}></div>
 
           <p className={styles.frase}>
             {idioma === "pt" ? livro.descricao_pt : livro.descricao_en}

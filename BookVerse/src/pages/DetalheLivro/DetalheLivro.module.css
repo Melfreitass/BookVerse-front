@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+.page {
+    min-height: 100vh;
+    background: #0e1320;
+    color: #D3E4FE;
+    font-family: 'Manrope', sans-serif;
+    padding: 4rem 2rem;
+}
+
+.main {
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.container {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    background:
+        radial-gradient(circle at top right,
+            rgba(239, 104, 85, 0.05),
+            transparent 30%),
+        linear-gradient(180deg,
+            #091223 0%,
+            #050B18 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 32px;
+    padding: 3rem;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.35);
+}
+
+.imagemContainer {
+    flex-shrink: 0;
+}
+
+.capa {
+    width: 360px;
+    height: 540px;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow:
+        0 0 40px rgba(239, 104, 85, 0.08),
+        0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.infoContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.topo {
+    margin-bottom: 2rem;
+}
+
+.badges {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.badgeStatus,
+.badgeCategoria {
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.badgeStatus {
+    color: #EF6855;
+    background: rgba(239, 104, 85, 0.08);
+    border: 1px solid rgba(239, 104, 85, 0.2);
+}
+
+.titulo {
+    font-size: 3.2rem;
+    font-family: 'Noto Serif', serif;
+    margin-bottom: 0.8rem;
+    color: #F8FAFC;
+    font-weight: 600;
+}
+
+.autor {
+    color: #EF6855;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.infos {
+    display: flex;
+    gap: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 2rem;
+}
+
+.infoItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.infoItem span {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: rgba(193, 197, 220, 0.45);
+}
+
+.infoItem strong {
+    color: #D3E4FE;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.formato {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.formatoIcone {
+    color: #EF6855;
+    font-size: 1rem;
+}
+
+.formato p {
+    color: rgba(193, 197, 220, 0.8);
+    font-size: 0.95rem;
+}
+
+.sinopse {
+    color: rgba(193, 197, 220, 0.72);
+    line-height: 1.9;
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    max-width: 750px;
+}
+
+.botoes {
+    display: flex;
+    gap: 1rem;
+}
+
+.botaoPrincipal,
+.botaoSecundario {
+    padding: 1rem 2rem;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-family: 'Manrope', sans-serif;
+}
+
+.botaoPrincipal {
+    background: #EF6855;
+    color: white;
+    border: none;
+    box-shadow: 0 0 25px rgba(239, 104, 85, 0.25);
+}
+
+.botaoPrincipal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 35px rgba(239, 104, 85, 0.35);
+}
+
+.botaoSecundario {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #D3E4FE;
+}
+
+.botaoSecundario:hover {
+    border-color: rgba(239, 104, 85, 0.4);
+    color: #EF6855;
+}
+
+.loading {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #050B18;
+    color: #D3E4FE;
+    font-size: 1.2rem;
+    font-family: 'Manrope', sans-serif;
+}
+
+@media (max-width: 1100px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .infos {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .badges {
+        justify-content: center;
+    }
+
+    .botoes {
+        justify-content: center;
+    }
+
+    .sinopse {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 2rem 1rem;
+    }
+
+    .container {
+        padding: 2rem;
+    }
+
+    .capa {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+    }
+
+    .titulo {
+        font-size: 2.2rem;
+    }
+
+    .infos {
+        gap: 1.5rem;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+
+    .botaoPrincipal,
+    .botaoSecundario {
+        width: 100%;
+    }
+}

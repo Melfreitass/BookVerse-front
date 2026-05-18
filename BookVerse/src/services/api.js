@@ -2,7 +2,6 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-
 async function realizarRequisicao(endpoint) {
     try {
         const response = await fetch(
@@ -24,14 +23,15 @@ async function realizarRequisicao(endpoint) {
         }
 
         if (!response.ok) {
-            throw new Error(`Erro na requisição (${response.status}): ${response.statusText}`);
+            throw new Error(
+                `Erro na requisição (${response.status}): ${response.statusText}`,
+            );
         }
 
         return await response.json();
     } catch (error) {
         console.error(
             `Erro ao acessar o endpoint ${endpoint}:`,
-
             error,
         );
 
@@ -61,4 +61,8 @@ export async function buscarLivros() {
 
 export async function buscarCuriosidades() {
     return await realizarRequisicao('/curiosidades');
+}
+
+export async function buscarLivroPorId(id) {
+    return await realizarRequisicao(`/livros/${id}`);
 }
