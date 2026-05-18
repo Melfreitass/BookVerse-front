@@ -1,36 +1,44 @@
-import React, { useState } from 'react';
 import styles from './CardQuestao.module.css'
 
 export default function CardQuestao({
+
     pergunta,
     alternativas,
     correta,
     explicacao,
-    dica
+    dica,
+    respostaSelecionada,
+    aoResponder
+
 }) {
 
-    const [respostaSelecionada, setRespostaSelecionada] = useState(null);
+    const verificarClasse = (id) => {
 
-   const verificarClasse = (id) => {
+        if (respostaSelecionada === null ||
+            respostaSelecionada === undefined) {
 
-    if (respostaSelecionada === null) return "";
+            return "";
+        }
 
-    if (id === correta.toUpperCase()) {
-        return styles.correta;
-    }
+        if (id === correta.toUpperCase()) {
 
-    if (
-        id === respostaSelecionada &&
-        id !== correta.toUpperCase()
-    ) {
-        return styles.errada;
-    }
+            return styles.correta;
+        }
 
-    return "";
-};
+        if (
+            id === respostaSelecionada &&
+            id !== correta.toUpperCase()
+        ) {
+
+            return styles.errada;
+        }
+
+        return "";
+    };
 
     return (
         <>
+
             <section className={styles.cardQuestao}>
 
                 <p className={styles.enunciado}>
@@ -38,32 +46,61 @@ export default function CardQuestao({
                 </p>
 
                 <div className={styles.alternativas}>
+
                     {alternativas.map((alternativa) => (
+
                         <button
                             key={alternativa.id}
-                            className={`${styles.alternativa} ${verificarClasse(alternativa.id)}`}
-                            onClick={() => setRespostaSelecionada(alternativa.id)}
+
+                            className={`${styles.alternativa}
+                            ${verificarClasse(alternativa.id)}`}
+
+                            onClick={() =>
+                                aoResponder(alternativa.id)
+                            }
                         >
 
                             <span className={styles.letra}>
                                 {alternativa.id}
                             </span>
 
-                            <p>{alternativa.texto}</p>
+                            <p>
+                                {alternativa.texto}
+                            </p>
 
                         </button>
+
                     ))}
+
                 </div>
+
             </section>
 
             {respostaSelecionada && (
+
                 <section className={styles.explicacao}>
 
                     <div className={styles.explicacaoTexto}>
 
-                        <h2>Explicação Comentada</h2>
+                        <h2>
+                            Explicação Comentada
+                        </h2>
 
-                        <p>{explicacao}</p>
+                        <p>
+                            {explicacao}
+                        </p>
+
+                        <div className={styles.dica}>
+
+                            <strong>
+                                DICA DE OURO
+                            </strong>
+
+                            <span>
+                                {dica}
+                            </span>
+
+                        </div>
 
                     </div>
 

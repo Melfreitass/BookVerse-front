@@ -117,17 +117,7 @@ function Biblioteca() {
                             <button>Todos os Autores</button>
                         </div>
 
-                        <div className={styles.filtro}>
-                            <span>ÉPOCA LITERÁRIA</span>
-
-                            <button>Todas as Épocas</button>
-                        </div>
-
-                        <div className={styles.filtro}>
-                            <span>POPULARIDADE</span>
-
-                            <button>Mais Relevantes</button>
-                        </div>
+                      
                     </div>
 
                     <div className={styles.banner}>
