@@ -11,6 +11,8 @@ import Home from './pages/Home/Home.jsx'
 import Biblioteca from './pages/Biblioteca/Biblioteca.jsx'
 import ObraPrincipal from './pages/ObraPrincipal/ObraPrincipal.jsx'
 import DetalheLivro from './pages/DetalheLivro/DetalheLivro.jsx'
+import Simulados from './pages/Simulados/Simulados.jsx'
+
 
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
                 <Route path="/biblioteca" element={<Biblioteca idioma={idioma}/>} />
                 <Route path="/livro/:id" element={<DetalheLivro />} />
                 <Route path="/obraPrincipal" element={<ObraPrincipal idioma={idioma}/>} />
+                <Route path="/simulados" element={<Simulados idioma={idioma}/>} />
             </Routes>
 
             <Footer />
