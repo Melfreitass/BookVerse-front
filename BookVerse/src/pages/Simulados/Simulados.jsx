@@ -12,6 +12,10 @@ function Simulados() {
 
     const [questaoAtual, setQuestaoAtual] = useState(0);
 
+    const [erro, setErro] = useState(false);
+
+    const [respostas, setRespostas] = useState({});
+
     useEffect(() => {
 
         async function carregarDados() {
@@ -31,12 +35,24 @@ function Simulados() {
                     "Erro ao carregar simulados:",
                     error
                 );
+
+                setErro(true);
             }
         }
 
         carregarDados();
 
     }, []);
+
+    function responderQuestao(idQuestao, resposta) {
+
+        setRespostas((prev) => ({
+
+            ...prev,
+
+            [idQuestao]: resposta
+        }));
+    }
 
     function proximaQuestao() {
 
@@ -54,7 +70,26 @@ function Simulados() {
         }
     }
 
-    if (simulados.length === 0) {
+    const totalAcertos =
+        Object.values(respostas).filter(
+            (item) => item.acertou
+        ).length;
+
+    const totalErros =
+        Object.values(respostas).filter(
+            (item) => !item.acertou
+        ).length;
+
+    if (erro) {
+
+        return (
+            <p className={styles.loading}>
+                Erro ao carregar simulados
+            </p>
+        );
+    }
+
+    if (!simulados || simulados.length === 0) {
 
         return (
             <p className={styles.loading}>
@@ -74,11 +109,11 @@ function Simulados() {
                     <div>
 
                         <span className={styles.tag}>
-                            SIMULADO 2024
+                            SIMULADO ENEM 2024
                         </span>
 
                         <h1>
-                            Questões sobre o livro Vidas
+                            Ciências da Natureza e suas Tecnologias
                         </h1>
 
                     </div>
@@ -96,7 +131,7 @@ function Simulados() {
                 </div>
 
                 <CardQuestao
-                    key={simulados[questaoAtual].id}
+
                     pergunta={
                         simulados[questaoAtual].pergunta_pt
                     }
@@ -124,15 +159,49 @@ function Simulados() {
                     ]}
 
                     correta={
-                        simulados[questaoAtual].resposta_correta
+                        simulados[
+                            questaoAtual
+                        ].resposta_correta
                     }
 
                     explicacao={
-                        simulados[questaoAtual].explicacao_pt
+                        simulados[
+                            questaoAtual
+                        ].explicacao_pt
                     }
 
                     dica={
                         "Leia atentamente o enunciado."
+                    }
+
+                    respostaSelecionada={
+                        respostas[
+                            simulados[
+                                questaoAtual
+                            ].id
+                        ]?.resposta
+                    }
+
+                    aoResponder={(resposta) =>
+                        responderQuestao(
+
+                            simulados[
+                                questaoAtual
+                            ].id,
+
+                            {
+
+                                resposta,
+
+                                acertou:
+
+                                    resposta ===
+
+                                    simulados[
+                                        questaoAtual
+                                    ].resposta_correta.toUpperCase()
+                            }
+                        )
                     }
                 />
 
@@ -151,6 +220,18 @@ function Simulados() {
                     >
                         PRÓXIMA QUESTÃO →
                     </button>
+
+                </div>
+
+                <div className={styles.resultado}>
+
+                    <p>
+                         Acertos: {totalAcertos}
+                    </p>
+
+                    <p>
+                         Erros: {totalErros}
+                    </p>
 
                 </div>
 
