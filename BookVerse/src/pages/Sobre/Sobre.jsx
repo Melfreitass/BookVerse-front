@@ -3,29 +3,6 @@ import escritorio from '../../assets/escritorio.png';
 import Cards from '../../components/Cards/Cards';
 
 function Sobre() {
-    /* const [membro, setMembros] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        async function carregarMembro() {
-            try {
-                const membroData = await buscarMembros();
-
-                setMembros(membroData);
-            } catch (error) {
-                console.error('Erro ao carregar equipe:', error);
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        carregarMembro();
-    }, []);
-
-    if (loading) {
-        return <p className={styles.loading}>Carregando equipe...</p>;
-    } */
-
     return (
         <div className={styles.page}>
             <main className={styles.main}>
