@@ -1,12 +1,9 @@
 import styles from './Sobre.module.css';
 import escritorio from '../../assets/escritorio.png';
-
-import { useEffect, useState } from 'react';
-
-import { buscarMembros } from '../../services/api';
+import Cards from '../../components/Cards/Cards';
 
 function Sobre() {
-    const [membro, setMembros] = useState([]);
+    /* const [membro, setMembros] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -27,7 +24,7 @@ function Sobre() {
 
     if (loading) {
         return <p className={styles.loading}>Carregando equipe...</p>;
-    }
+    } */
 
     return (
         <div className={styles.page}>
@@ -114,25 +111,7 @@ function Sobre() {
                     </div>
 
                     <div id="equipeScroll" className={styles.equipeGrid}>
-                        {membro.map((membro) => (
-                            <div key={membro.id} className={styles.cardEquipe}>
-                                <div className={styles.cardImagemContainer}>
-                                    <img
-                                        src={membro.foto}
-                                        alt={membro.nome}
-                                        className={styles.cardImagem}
-                                    />
-                                </div>
-
-                                <div className={styles.cardConteudo}>
-                                    <span className={styles.cardFuncao}>{membro.funcao}</span>
-
-                                    <h3 className={styles.cardNome}>{membro.nome}</h3>
-
-                                    <p className={styles.cardDescricao}>{membro.descricao}</p>
-                                </div>
-                            </div>
-                        ))}
+                        <Cards />
                     </div>
                 </section>
 
@@ -141,7 +120,6 @@ function Sobre() {
                         <h2 className={styles.integracaoTitulo}>
                             A Integração Técnica como <span>Pilar</span>
                         </h2>
-
                         <div className={styles.integracaoLista}>
                             <div className={styles.integracaoItem}>
                                 <div className={styles.integracaoIcone}>✣</div>
