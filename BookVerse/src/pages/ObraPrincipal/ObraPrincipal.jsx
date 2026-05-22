@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom"
 import { FaPlay, FaBookOpen, FaBrain, FaArrowRight } from "react-icons/fa";
 import { buscarLivros, buscarPersonagem, buscarCuriosidades, buscarSimulados } from "../../services/api"
+import CardPersonagem from "../../components/CardPersonagem/CardPersonagem"
 
 function ObraPrincipal({ idioma }) {
     const [livro, setLivro] = useState(null)
@@ -51,20 +52,12 @@ function ObraPrincipal({ idioma }) {
         carregarDados();
     }, []);
 
-    if (!livro) {
-        return (
-            <p className={styles.loading}>
-                Carregando...
-            </p>
-        );
-    }
-
   return (
-    <home className={styles.obraPrincipal}>
+    <main className={styles.obraPrincipal}>
       <section className={styles.infoPrincipal}>
         <div className={styles.bgTitulo}>
             <h1 className={styles.titulo}>
-                {livro.titulo.toUpperCase()}
+                {livro ? livro.titulo.toUpperCase() : "..."}
             </h1>
         </div>
 
@@ -76,11 +69,95 @@ function ObraPrincipal({ idioma }) {
           <div className={styles.linha}></div>
 
           <p className={styles.frase}>
-            {idioma === "pt" ? livro.descricao_pt : livro.descricao_en}
+            {livro ? idioma === "pt" ? livro.descricao_pt : livro.descricao_en : "Carregando descrição"}
           </p>
         </div>
       </section>
-    </home>
+
+      <section className={styles.resumoArea}>
+        <div className={styles.resumoCard}>
+            <div className={styles.resumoHeader}>
+                <FaBookOpen className={styles.iconResumo} />
+
+                <div>
+                    <h3 className={styles.resumoTitulo}>
+                        {livro ? idioma ==="pt" ? "Resumo Dinâmico" : "Dynamic Summary" : "Carregando Resumo"}
+                    </h3>
+                </div>
+            </div>
+
+            <p className={styles.resumoTexto}>
+                { livro ?
+                    idioma === "pt" ? livro.enredo_pt || "Sem resumo disponível" : livro.enredo_en || "No summary available"
+                : "Carregando resumo..."
+                }
+            </p>
+
+            <div className={styles.infoLivro}>
+                <div className={styles.infoBox}>
+                    <span>
+                        {idioma === "pt" ? "GÊNERO" : "GENRE"}
+                    </span>
+
+                    <p>
+                        { livro ? idioma === "pt" ? livro.genero_pt : livro.genero_en : "..."
+                        }
+                    </p>
+                </div>
+
+                <div className={styles.infoBox}>
+                    <span>
+                        {idioma === "pt" ? "ANO" : "YEAR"}
+                    </span>
+
+                    <p>{livro ? livro.ano : "..."}</p>
+                </div>
+
+                <div className={styles.infoBox}>
+                    <span>
+                        {idioma === "pt" ? "MOVIMENTO" : "MOVEMENT"}
+                    </span>
+
+                    <p>
+                        { livro ?
+                            idioma === "pt" ? livro.movimento_pt : livro.movimento_en
+                            : "..."
+                        }
+                </p>
+                </div>
+            </div>
+        </div>
+
+        <div className={styles.capaLivro}>
+            <img src={livro?.capa_url} alt={livro?.titulo || "Carregando"} />
+        </div>
+
+      </section>
+
+      <section className={styles.personagensSection}>
+        <div className={styles.personagensHeader}>
+            <h2 className={styles.personagensTitulo}>
+                {
+                    idioma === "pt"
+                    ? "Análise de Personagens"
+                    : "Character Analysis"
+                }
+            </h2>
+        </div>
+
+        <div className={styles.personagensGrid}>
+            {
+                personagem.map((item) => (
+                    <CardPersonagem
+                    key={item.id}
+                    personagem={item}
+                    idioma={idioma}
+                    />
+                ))
+            }
+        </div>
+      </section>
+    </main>
   );
 }
 

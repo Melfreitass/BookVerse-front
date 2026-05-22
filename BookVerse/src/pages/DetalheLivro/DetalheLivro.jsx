@@ -14,6 +14,8 @@ function DetalheLivro() {
             try {
                 const livroData = await buscarLivroPorId(id);
 
+                console.log(livroData);
+
                 setLivro(livroData);
             } catch (error) {
                 console.error('Erro ao carregar livro:', error);
@@ -70,19 +72,13 @@ function DetalheLivro() {
                             <div className={styles.infoItem}>
                                 <span>PUBLICAÇÃO</span>
 
-                                <strong>{livro.publicacao}</strong>
+                                <strong>{livro.ano}</strong>
                             </div>
 
                             <div className={styles.infoItem}>
                                 <span>IDIOMA</span>
 
-                                <strong>{livro.idioma}</strong>
-                            </div>
-
-                            <div className={styles.infoItem}>
-                                <span>LEITURA</span>
-
-                                <strong>{livro.tempoLeitura}</strong>
+                                <strong>{livro.genero_pt}</strong>
                             </div>
                         </div>
 
@@ -96,13 +92,9 @@ function DetalheLivro() {
                             {livro.sinopse}
                         </p>
 
-                        <div className={styles.botoes}>
+                        <div className={styles.botoao}>
                             <button className={styles.botaoPrincipal}>
-                                Ler Agora
-                            </button>
-
-                            <button className={styles.botaoSecundario}>
-                                Salvar
+                                Voltar para a Biblioteca
                             </button>
                         </div>
                     </div>
