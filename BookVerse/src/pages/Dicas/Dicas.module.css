@@ -3,7 +3,7 @@
 .container {
     width: 100%;
     min-height: 100vh;
-    background: #0e1320;
+    background: #000f21;
     padding: 0 8%;
     font-family: 'Manrope', sans-serif;
 }
@@ -14,6 +14,7 @@
     justify-content: space-between;
     gap: 60px;
     width: 100%;
+    padding: 60px 0;
 }
 
 .content {
@@ -47,8 +48,8 @@
 .img {
     width: 100%;
     max-width: 400px;
-    margin-top: 30px;
     border-radius: 20px;
+    overflow: hidden;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 0 35px rgba(255, 106, 74, 0.15);
@@ -57,7 +58,57 @@
 .img img {
     width: 100%;
     display: block;
+}
+
+.cardsSection {
+    padding: 60px 0;
+}
+
+.info {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.info h3 {
+    color: #d3e4fe;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.info p {
+    color: #dfbfba;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.cardGrande {
+    background: #111b34;
+    padding: 30px;
     border-radius: 20px;
+    border-left: 4px solid #de6246;
+}
+
+.cardGrande span {
+    color: #de6246;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.cardGrande h2 {
+    color: white;
+    margin: 18px 0;
+    font-size: 28px;
+}
+
+.cardGrande p {
+    color: #c8c8d0;
+    line-height: 1.7;
 }
 
 .temasSection {
@@ -79,8 +130,8 @@
 .titulo p {
     color: #dfbfba;
     max-width: 700px;
-    line-height: 1.8;
     margin: 0 auto;
+    line-height: 1.8;
 }
 
 .temasGrid {
@@ -90,9 +141,8 @@
 }
 
 .temaCard {
-    overflow: hidden;
-    border-radius: 20px;
     background: #111b34;
+    border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: 0.3s;
 }
@@ -109,6 +159,7 @@
     color: #de6246;
     font-size: 12px;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .temaContent h3 {
@@ -122,10 +173,8 @@
     line-height: 1.7;
 }
 
-
-
 .curiosidadesSection {
-    padding: 20px 0 60px;
+    padding: 20px 0 80px;
 }
 
 .tituloCentro {
@@ -134,7 +183,7 @@
 }
 
 .tituloCentro h2 {
-    color: #d3e4fe;
+    color: white;
     font-size: 42px;
     margin-bottom: 16px;
     font-family: 'Noto Serif', serif;
@@ -153,7 +202,6 @@
 .curiosidadeCard {
     background: #111b34;
     border-radius: 20px;
-    overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -164,6 +212,7 @@
 .curiosidadeContent span {
     color: #de6246;
     font-size: 12px;
+    text-transform: uppercase;
 }
 
 .curiosidadeContent h3 {
@@ -175,4 +224,15 @@
 .curiosidadeContent p {
     color: #c8c8d0;
     line-height: 1.7;
+}
+
+.curiosidadeCard:first-child {
+    grid-row: span 2;
+}
+
+.loading {
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+    font-size: 22px;
 }
