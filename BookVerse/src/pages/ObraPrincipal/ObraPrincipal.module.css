@@ -187,3 +187,103 @@
     flax-wrap: wrap;
     gap: 2rem;
 }
+
+.contextoSection {
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin-top: 6rem;
+
+    background: rgba(20, 30, 50, 0.72);
+
+    border-radius: 28px;
+
+    padding: 3rem;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 4rem;
+}
+
+
+.contextoTexto {
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.5rem;
+}
+
+
+.contextoTitulo {
+    color: white;
+
+    font-size: 2.4rem;
+
+    font-family: "Noto Serif", serif;
+
+    font-weight: 600;
+}
+
+
+.contextoDescricao {
+    color: rgba(255,255,255,0.72);
+
+    line-height: 2;
+
+    font-size: 1rem;
+
+    font-family: "Manrope", sans-serif;
+}
+
+
+.anoCard {
+    min-width: 260px;
+
+    height: 260px;
+
+    border-radius: 24px;
+
+    background: rgba(255,255,255,0.04);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.anoCard h2 {
+    color: #EF6855;
+
+    font-size: 4rem;
+
+    font-family: "Noto Serif", serif;
+}
+
+
+.anoCard span {
+    color: rgba(255,255,255,0.6);
+
+    letter-spacing: 3px;
+
+    font-size: 0.8rem;
+
+    margin-top: 0.5rem;
+
+    font-family: "Manrope", sans-serif;
+}
