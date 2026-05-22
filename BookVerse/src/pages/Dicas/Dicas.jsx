@@ -1,6 +1,6 @@
 import styles from './Dicas.module.css';
 import livro from '../../assets/livro.png';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { buscarCuriosidades } from '../../services/api';
 
 function Dicas({ idioma }) {
@@ -10,7 +10,6 @@ function Dicas({ idioma }) {
         async function carregarDados() {
             try {
                 const dados = await buscarCuriosidades();
-
                 setCuriosidades(dados);
             } catch (error) {
                 console.error('Erro ao carregar curiosidades:', error);
@@ -20,12 +19,17 @@ function Dicas({ idioma }) {
         carregarDados();
     }, []);
 
-    const temasRedacao = curiosidades.filter((item) => item.categoria_pt === 'temaRedacao');
+    const temasRedacao = useMemo(() => {
+        return curiosidades.filter((item) => item.categoria_pt === 'temaRedacao');
+    }, [curiosidades]);
 
-    const curiosidadesLista = curiosidades.filter((item) => item.categoria_pt === 'curiosidade');
+    const curiosidadesLista = useMemo(() => {
+        return curiosidades.filter((item) => item.categoria_pt === 'curiosidade');
+    }, [curiosidades]);
 
     return (
         <section className={styles.container}>
+            {/* HERO */}
             <main className={styles.home}>
                 <div className={styles.content}>
                     <span className={styles.tag}>Área do Vestibulando</span>
@@ -43,10 +47,10 @@ function Dicas({ idioma }) {
                 </div>
             </main>
 
+            {/* TEMAS DE REDAÇÃO */}
             <section className={styles.temasSection}>
                 <div className={styles.titulo}>
                     <h2>Temas de Redação</h2>
-
                     <p>Propostas inéditas, repertórios e argumentos para elevar sua redação.</p>
                 </div>
 
@@ -65,6 +69,7 @@ function Dicas({ idioma }) {
                 </div>
             </section>
 
+            {/* CURIOSIDADES */}
             <section className={styles.curiosidadesSection}>
                 <div className={styles.tituloCentro}>
                     <h2>Curiosidades Literárias</h2>

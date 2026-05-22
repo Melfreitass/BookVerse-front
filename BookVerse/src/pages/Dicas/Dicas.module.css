@@ -60,86 +60,9 @@
     border-radius: 20px;
 }
 
-.cardsSection {
-    padding: 80px 0;
-}
-
-.info {
-    margin-bottom: 40px;
-}
-
-.info h3 {
-    color: #d3e4fe;
-    margin-bottom: 10px;
-    font-size: 28px;
-}
-
-.info p {
-    color: #dfbfba;
-}
-
-.cards {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.cardGrande {
-    flex: 2;
-    background: #111b34;
-    padding: 30px;
-    border-radius: 20px;
-    border-left: 4px solid #de6246;
-}
-
-.cardGrande span {
-    color: #de6246;
-    font-size: 14px;
-}
-
-.cardGrande h2 {
-    color: white;
-    margin: 20px 0;
-    font-size: 32px;
-}
-
-.cardGrande button {
-    margin-top: 20px;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    background: #24314f;
-    color: white;
-}
-
-.cardPequeno {
-    flex: 1;
-    background: #111b34;
-    padding: 30px;
-    border-radius: 20px;
-}
-
-.cardBaixo {
-    width: 260px;
-    background: #111b34;
-    padding: 30px;
-    border-radius: 20px;
-}
-
-.cardBaixo span {
-    display: inline-flex;
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: rgba(255, 106, 74, 0.12);
-    color: #de6246;
-    font-size: 13px;
-    margin-bottom: 20px;
-}
-
 .temasSection {
     padding: 20px 0 80px;
 }
-
 
 .titulo {
     margin-bottom: 40px;
@@ -157,6 +80,7 @@
     color: #dfbfba;
     max-width: 700px;
     line-height: 1.8;
+    margin: 0 auto;
 }
 
 .temasGrid {
@@ -175,12 +99,6 @@
 
 .temaCard:hover {
     transform: translateY(-6px);
-}
-
-.temaCard img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
 }
 
 .temaContent {
@@ -204,6 +122,8 @@
     line-height: 1.7;
 }
 
+
+
 .curiosidadesSection {
     padding: 20px 0 60px;
 }
@@ -214,7 +134,7 @@
 }
 
 .tituloCentro h2 {
-    color: white;
+    color: #d3e4fe;
     font-size: 42px;
     margin-bottom: 16px;
     font-family: 'Noto Serif', serif;
@@ -237,12 +157,6 @@
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.curiosidadeCard img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-
 .curiosidadeContent {
     padding: 24px;
 }
@@ -261,12 +175,4 @@
 .curiosidadeContent p {
     color: #c8c8d0;
     line-height: 1.7;
-}
-
-.curiosidadeCard:first-child {
-    grid-row: span 2;
-}
-
-.curiosidadeCard:first-child img {
-    height: 420px;
 }
