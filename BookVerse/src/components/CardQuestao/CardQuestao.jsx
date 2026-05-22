@@ -33,7 +33,8 @@ export default function CardQuestao({
                     {alternativas.map((alternativa) => (
                         <button
                             key={alternativa.id}
-                            className={`${styles.alternativa} ${verificarClasse(alternativa.id)}`}
+                            className={`${styles.alternativa}
+                            ${verificarClasse(alternativa.id)}`}
                             onClick={() => aoResponder(alternativa.id)}>
                             <span className={styles.letra}>{alternativa.id}</span>
 
