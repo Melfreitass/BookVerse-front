@@ -1,6 +1,6 @@
 import styles from './Simulados.module.css';
 import { useEffect, useState } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import CardQuestao from '../../components/CardQuestao/CardQuestao';
 import { buscarSimulados } from '../../services/api';
 
@@ -22,22 +22,32 @@ function Simulados() {
                 setErro(true);
             }
         }
+
         carregarDados();
     }, []);
 
     const responderQuestao = (idQuestao, resposta) => {
-        setRespostas((prev) => ({ ...prev, [idQuestao]: resposta }));
+        setRespostas((prev) => ({
+            ...prev,
+            [idQuestao]: resposta,
+        }));
+
         setQuestoesPendentes((prev) => prev.filter((q) => q.id !== idQuestao));
     };
 
     const totalAcertos = Object.values(respostas).filter((item) => item.acertou).length;
+
     const totalErros = Object.values(respostas).filter((item) => !item.acertou).length;
+
     const porcentagemAcerto =
         simulados.length > 0 ? Math.round((totalAcertos / simulados.length) * 100) : 0;
 
     const tentarFinalizar = () => {
         const pendentes = simulados
-            .map((q, index) => ({ id: q.id, index }))
+            .map((q, index) => ({
+                id: q.id,
+                index,
+            }))
             .filter((q) => !respostas[q.id]);
 
         if (pendentes.length > 0) {
@@ -48,22 +58,24 @@ function Simulados() {
     };
 
     if (erro) return <p className={styles.loading}>Erro ao carregar simulados</p>;
+
     if (!simulados || simulados.length === 0)
         return <p className={styles.loading}>Carregando...</p>;
 
     if (concluido) {
         return (
             <div className={styles.obraPrincipal}>
-                <div className={styles.infoPrincipal}>
-                    <h2 className={styles.subtitulo}>DESEMPENHO FINAL</h2>
-                    <div className={styles.linha}></div>
-                    <h1 className={styles.titulo}>Simulado Concluído</h1>
+                <div className={styles.infoPrincipalResultado}>
+                    <div className={styles.tagSimulado}>RESULTADO FINAL</div>
+
+                    <h1 className={styles.tituloResultado}>Simulado Concluído</h1>
                 </div>
 
                 <div className={styles.resumoArea}>
                     <div className={styles.resumoCard}>
                         <div className={styles.resumoHeader}>
                             <span className={styles.iconResumo}>📊</span>
+
                             <h3 className={styles.resumoTitulo}>Estatísticas Gerais</h3>
                         </div>
 
@@ -73,8 +85,14 @@ function Simulados() {
                                     <PieChart>
                                         <Pie
                                             data={[
-                                                { name: 'Acertos', value: totalAcertos },
-                                                { name: 'Erros', value: totalErros },
+                                                {
+                                                    name: 'Acertos',
+                                                    value: totalAcertos,
+                                                },
+                                                {
+                                                    name: 'Erros',
+                                                    value: totalErros,
+                                                },
                                             ]}
                                             innerRadius={65}
                                             outerRadius={85}
@@ -83,16 +101,18 @@ function Simulados() {
                                             dataKey="value"
                                             startAngle={90}
                                             endAngle={-270}>
-                                            <Cell fill="#EF6855" /> {/* Coral padrão */}
+                                            <Cell fill="#EF6855" />
+
                                             <Cell fill="rgba(255,255,255,0.1)" />
                                         </Pie>
                                     </PieChart>
                                 </ResponsiveContainer>
+
                                 <div className={styles.centroGrafico}>
                                     <span className={styles.porcentagemTexto}>
                                         {porcentagemAcerto}%
                                     </span>
-                                    <p className={styles.labelCentro}>aproveitamento</p>
+
                                 </div>
                             </div>
                         </div>
@@ -100,10 +120,13 @@ function Simulados() {
                         <div className={styles.infoLivro}>
                             <div className={styles.infoBox}>
                                 <span>TOTAL</span>
+
                                 <p>{simulados.length} Questões</p>
                             </div>
+
                             <div className={styles.infoBox}>
                                 <span>ACERTOS</span>
+
                                 <p style={{ color: '#EF6855' }}>{totalAcertos}</p>
                             </div>
                         </div>
@@ -122,22 +145,25 @@ function Simulados() {
     return (
         <div className={styles.obraPrincipal}>
             <div className={styles.infoPrincipal}>
-                <h2 className={styles.subtitulo}>SIMULADO ENEM 2024</h2>
-                <div className={styles.linha}></div>
-                <h1 className={styles.titulo} style={{ fontSize: '4rem' }}>
-                    Ciências da Natureza
-                </h1>
-                <p className={styles.frase}>
-                    Questão {questaoAtual + 1} de {simulados.length}
-                </p>
+                <div className={styles.infoEsquerda}>
+                    <div className={styles.tagSimulado}> SIMULADO </div>
+
+                    <h1 className={styles.titulo}>Questões sobre o livro Vidas Secas</h1>
+                </div>
+
+                <div className={styles.infoDireita}>
+                    <span className={styles.questaoTexto}>
+                        QUESTÃO {questaoAtual + 1} DE {simulados.length}
+                    </span>
+
+                </div>
             </div>
 
-            <div
-                className={styles.resumoArea}
-                style={{ marginTop: '4rem', flexDirection: 'column' }}>
+            <div className={styles.resumoArea}>
                 {questoesPendentes.length > 0 && (
                     <div className={styles.alertaPendentes}>
                         <p>⚠️ Resolva antes de finalizar:</p>
+
                         <div className={styles.listaPendentes}>
                             {questoesPendentes.map((q) => (
                                 <button
@@ -154,14 +180,31 @@ function Simulados() {
                     </div>
                 )}
 
-                <div className={styles.resumoCard} style={{ width: '100%', gap: '1rem' }}>
+                <div
+                    className={styles.resumoCard}
+                    style={{
+                        width: '100%',
+                        gap: '1rem',
+                    }}>
                     <CardQuestao
                         pergunta={simulados[questaoAtual].pergunta_pt}
                         alternativas={[
-                            { id: 'A', texto: simulados[questaoAtual].opcao_a },
-                            { id: 'B', texto: simulados[questaoAtual].opcao_b },
-                            { id: 'C', texto: simulados[questaoAtual].opcao_c },
-                            { id: 'D', texto: simulados[questaoAtual].opcao_d },
+                            {
+                                id: 'A',
+                                texto: simulados[questaoAtual].opcao_a,
+                            },
+                            {
+                                id: 'B',
+                                texto: simulados[questaoAtual].opcao_b,
+                            },
+                            {
+                                id: 'C',
+                                texto: simulados[questaoAtual].opcao_c,
+                            },
+                            {
+                                id: 'D',
+                                texto: simulados[questaoAtual].opcao_d,
+                            },
                         ]}
                         correta={simulados[questaoAtual].resposta_correta}
                         explicacao={simulados[questaoAtual].explicacao_pt}
@@ -181,8 +224,9 @@ function Simulados() {
                         <button
                             className={styles.btnSecundario}
                             onClick={() => questaoAtual > 0 && setQuestaoAtual(questaoAtual - 1)}>
-                            ANTERIOR
+                            ←  ANTERIOR
                         </button>
+
                         <button
                             className={styles.btnPrincipal}
                             onClick={() =>
@@ -190,7 +234,9 @@ function Simulados() {
                                     ? tentarFinalizar()
                                     : setQuestaoAtual(questaoAtual + 1)
                             }>
-                            {questaoAtual === simulados.length - 1 ? 'FINALIZAR' : 'PRÓXIMA'}
+                            {questaoAtual === simulados.length - 1
+                                ? 'FINALIZAR'
+                                : 'PRÓXIMA QUESTÃO '}
                         </button>
                     </div>
                 </div>
