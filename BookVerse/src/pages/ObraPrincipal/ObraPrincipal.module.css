@@ -135,40 +135,55 @@
 
 .infoBox span {
     color: rgba(255,255,255,0.4);
-
     font-size: 0.7rem;
-
     letter-spacing: 2px;
-
     font-family: "Manrope", sans-serif;
 }
 
 
 .infoBox p {
     color: white;
-
     font-family: "Manrope", sans-serif;
-
     font-size: 0.95rem;
 }
 
 
 .capaLivro {
     width: 300px;
-
     min-width: 300px;
-
     background: rgba(20, 30, 50, 0.72);
-
     border: 1px solid rgba(255,255,255,0.08);
-
     border-radius: 24px;
-
     padding: 1.5rem;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
+}
+
+.personagensSection {
+    width: 90%;
+    max-width: 1400px;
+    margin-top: 7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.personagensHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.personagensTitulo {
+    color: white;
+    font-size: 2rem;
+    font-family: "Noto Serif", serif;
+    font-weight: 500;
+}
+
+.personagensGrid {
+    display: flex;
+    flax-wrap: wrap;
+    gap: 2rem;
 }

@@ -9,7 +9,6 @@ function CardPersonagem({ personagem, idioma }) {
             className={styles.imagem}
         />
 
-        <div className={styles.overlay}></div>
         <div className={styles.conteudo}>
         <h3 className={styles.nome}>
             {personagem.nome}

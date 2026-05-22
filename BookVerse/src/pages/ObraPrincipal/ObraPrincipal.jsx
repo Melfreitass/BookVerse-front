@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom"
 import { FaPlay, FaBookOpen, FaBrain, FaArrowRight } from "react-icons/fa";
 import { buscarLivros, buscarPersonagem, buscarCuriosidades, buscarSimulados } from "../../services/api"
+import CardPersonagem from "../../components/CardPersonagem/CardPersonagem"
 
 function ObraPrincipal({ idioma }) {
     const [livro, setLivro] = useState(null)
@@ -131,6 +132,30 @@ function ObraPrincipal({ idioma }) {
             <img src={livro?.capa_url} alt={livro?.titulo || "Carregando"} />
         </div>
 
+      </section>
+
+      <section className={styles.personagensSection}>
+        <div className={styles.personagensHeader}>
+            <h2 className={styles.personagensTitulo}>
+                {
+                    idioma === "pt"
+                    ? "Análise de Personagens"
+                    : "Character Analysis"
+                }
+            </h2>
+        </div>
+
+        <div className={styles.personagensGrid}>
+            {
+                personagem.map((item) => (
+                    <CardPersonagem
+                    key={item.id}
+                    personagem={item}
+                    idioma={idioma}
+                    />
+                ))
+            }
+        </div>
       </section>
     </main>
   );
