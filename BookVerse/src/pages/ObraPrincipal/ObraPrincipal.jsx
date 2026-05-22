@@ -157,6 +157,57 @@ function ObraPrincipal({ idioma }) {
             }
         </div>
       </section>
+
+      <section className={styles.contextoSection}>
+
+    <div className={styles.contextoTexto}>
+
+        <h2 className={styles.contextoTitulo}>
+            {
+                idioma === "pt"
+
+                    ? "Contexto Histórico"
+
+                    : "Historical Context"
+            }
+        </h2>
+
+        <p className={styles.contextoDescricao}>
+            {
+                idioma === "pt"
+
+                    ? livro?.contexto_historico_pt || "Carregando contexto..."
+
+                    : livro?.contexto_historico_en || "Loading context..."
+            }
+        </p>
+
+    </div>
+
+
+    <div className={styles.anoCard}>
+
+        <h2>
+            {livro?.ano || "..."}
+        </h2>
+
+        <span>
+            {
+                idioma === "pt"
+
+                    ? "ANO DE PUBLICAÇÃO"
+
+                    : "PUBLICATION YEAR"
+            }
+        </span>
+
+    </div>
+
+</section>
+
+      <section className={styles.videoSection}>
+
+      </section>
     </main>
   );
 }
