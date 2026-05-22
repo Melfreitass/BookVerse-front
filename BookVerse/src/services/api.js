@@ -66,3 +66,7 @@ export async function buscarCuriosidades() {
 export async function buscarLivroPorId(id) {
     return await realizarRequisicao(`/livros/${id}`);
 }
+
+export async function buscarBibliotecaIntegrada() {
+    return await realizarRequisicao('/integracao');
+}
