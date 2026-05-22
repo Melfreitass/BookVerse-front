@@ -1,0 +1,23 @@
+.card {
+    background: #111b34;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.categoria {
+    color: #ef6855;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.titulo {
+    color: white;
+    font-size: 22px;
+    margin: 16px 0;
+}
+
+.conteudo {
+    color: #c8c8d0;
+    line-height: 1.7;
+}
