@@ -1,182 +1,208 @@
+import styles from './Sobre.module.css';
+import escritorio from '../../assets/escritorio.png';
+import { useEffect, useState, useRef } from 'react';
+import { buscarMembros } from '../../services/api';
 
-import styles from "./Sobre.module.css";
-import escritorio from "../../assets/escritorio.png";
-import { useEffect, useState, useRef } from "react";
-import { buscarMembros } from "../../services/api";
+function Sobre({ idioma }) {
+    const [membro, setMembros] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-function Sobre() {
-  const [membro, setMembros] = useState([]);
-  const [loading, setLoading] = useState(true);
+    const scrollRef = useRef(null);
 
-  const scrollRef = useRef(null);
+    useEffect(() => {
+        async function carregarMembro() {
+            try {
+                const membroData = await buscarMembros();
 
-  useEffect(() => {
-    async function carregarMembro() {
-      try {
-        const membroData = await buscarMembros();
+                setMembros(membroData);
+            } catch (error) {
+                console.error('Erro ao carregar equipe:', error);
+            } finally {
+                setLoading(false);
+            }
+        }
 
-        setMembros(membroData);
-      } catch (error) {
-        console.error("Erro ao carregar equipe:", error);
-      } finally {
-        setLoading(false);
-      }
+        carregarMembro();
+    }, []);
+
+    const scroll = (direcao) => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollBy({
+                left: direcao === 'esquerda' ? -350 : 350,
+                behavior: 'smooth',
+            });
+        }
+    };
+
+    if (loading) {
+        return (
+            <p className={styles.loading}>
+                {idioma === 'pt' ? 'Carregando equipe...' : 'Loading team...'}
+            </p>
+        );
     }
 
-    carregarMembro();
-  }, []);
+    return (
+        <div className={styles.page}>
+            <main className={styles.main}>
+                <p className={styles.subtitulo}>
+                    {idioma === 'pt' ? 'EXCELÊNCIA TÉCNICA' : 'TECHNICAL EXCELLENCE'}
+                </p>
 
-  const scroll = (direcao) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: direcao === "esquerda" ? -350 : 350,
-        behavior: "smooth",
-      });
-    }
-  };
+                <h1 className={styles.tituloPrincipal}>
+                    {idioma === 'pt'
+                        ? 'Literatura e Tecnologia em '
+                        : 'Literature and Technology in '}
+                    <span className={styles.destaque}>
+                        {idioma === 'pt' ? 'Sinergia' : 'Synergy'}
+                    </span>
+                    .
+                </h1>
 
-  if (loading) {
-    return <p className={styles.loading}>Carregando equipe...</p>;
-  }
+                <p className={styles.texto}>
+                    {idioma === 'pt'
+                        ? 'O BookVerse nasceu da união de mentes técnicas focadas em revolucionar o acesso ao conhecimento especializado. Nossa missão é integrar sistemas complexos a uma experiência de aprendizagem editorial de luxo.'
+                        : 'BookVerse was born from the union of technical minds focused on revolutionizing access to specialized knowledge. Our mission is to integrate complex systems into a premium editorial learning experience.'}
+                </p>
 
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <p className={styles.subtitulo}>EXCELÊNCIA TÉCNICA</p>
+                <section className={styles.cards}>
+                    <div className={styles.cardGrande}>
+                        <img
+                            src={escritorio}
+                            alt={idioma === 'pt' ? 'Escritório' : 'Office'}
+                            className={styles.imagem}
+                        />
 
-        <h1 className={styles.tituloPrincipal}>
-          Literatura e Tecnologia em{" "}
-          <span className={styles.destaque}>Sinergia</span>.
-        </h1>
+                        <div className={styles.overlay}>
+                            <h2>{idioma === 'pt' ? 'Nossa Essência' : 'Our Essence'}</h2>
 
-        <p className={styles.texto}>
-          O BookVerse nasceu da união de mentes técnicas focadas em revolucionar
-          o acesso ao conhecimento especializado. Nossa missão é integrar
-          sistemas complexos a uma experiência de aprendizagem editorial de
-          luxo.
-        </p>
+                            <p>
+                                {idioma === 'pt'
+                                    ? 'O BookVerse nasceu da união entre literatura e tecnologia, criando uma biblioteca virtual focada em tornar o aprendizado mais acessível, moderno e interativo. Nosso projeto conecta *Vidas Secas* a novas experiências digitais por meio da integração com outras obras literárias.'
+                                    : 'BookVerse was born from the union of literature and technology, creating a virtual library focused on making learning more accessible, modern, and interactive. Our project connects Vidas Secas to new digital experiences through integration with other literary works.'}
+                            </p>
+                        </div>
+                    </div>
 
-        <section className={styles.cards}>
-          <div className={styles.cardGrande}>
-            <img src={escritorio} alt="Escritório" className={styles.imagem} />
+                    <div className={styles.cardsLado}>
+                        <div className={styles.cardPequeno}>
+                            <div className={styles.icone}>⌘</div>
 
-            <div className={styles.overlay}>
-              <h2>Nossa Essência</h2>
+                            <h3>{idioma === 'pt' ? 'Dev. de Sistemas' : 'Systems Development'}</h3>
 
-              <p>
-                Acreditamos que a educação técnica não deve ser apenas
-                funcional, mas também inspiradora. Cada linha de código e cada
-                desenho mecânico em nossa plataforma é projetado para máxima
-                eficiência e precisão acadêmica.
-              </p>
-            </div>
-          </div>
+                            <span>
+                                {idioma === 'pt' ? 'INTEGRAÇÃO FLUIDA' : 'SEAMLESS INTEGRATION'}
+                            </span>
+                        </div>
 
-          <div className={styles.cardsLado}>
-            <div className={styles.cardPequeno}>
-              <div className={styles.icone}>⌘</div>
+                        <div className={styles.cardPequeno}>
+                            <h3>{idioma === 'pt' ? 'Alunos Sesi' : 'Sesi Students'}</h3>
 
-              <h3>Dev. de Sistemas</h3>
+                            <span>
+                                {idioma === 'pt' ? 'PRECISÃO ESTRUTURAL' : 'STRUCTURAL PRECISION'}
+                            </span>
+                        </div>
+                    </div>
+                </section>
 
-              <span>INTEGRAÇÃO FLUIDA</span>
-            </div>
+                <section className={styles.equipeSection}>
+                    <div className={styles.equipeHeader}>
+                        <div>
+                            <h2 className={styles.equipeTitulo}>
+                                {idioma === 'pt' ? 'Nossa Equipe' : 'Our Team'}
+                            </h2>
 
-            <div className={styles.cardPequeno}>
-              <h3>Alunos Sesi</h3>
+                            <p className={styles.equipeSubtitulo}>
+                                {idioma === 'pt'
+                                    ? 'Conheça os profissionais responsáveis pelo desenvolvimento da plataforma.'
+                                    : 'Meet the professionals responsible for developing the platform.'}
+                            </p>
+                        </div>
 
-              <span>PRECISÃO ESTRUTURAL</span>
-            </div>
-          </div>
-        </section>
+                        <div className={styles.navegacao}>
+                            <button className={styles.botaoNav} onClick={() => scroll('esquerda')}>
+                                ❮
+                            </button>
 
-        <section className={styles.equipeSection}>
-          <div className={styles.equipeHeader}>
-            <div>
-              <h2 className={styles.equipeTitulo}>Nossa Equipe</h2>
+                            <button className={styles.botaoNav} onClick={() => scroll('direita')}>
+                                ❯
+                            </button>
+                        </div>
+                    </div>
 
-              <p className={styles.equipeSubtitulo}>
-                Conheça os profissionais responsáveis pelo desenvolvimento da
-                plataforma.
-              </p>
-            </div>
+                    <div ref={scrollRef} className={styles.equipeGrid}>
+                        {membro.map((membro) => (
+                            <div key={membro.id} className={styles.cardEquipe}>
+                                <div className={styles.cardImagemContainer}>
+                                    <img
+                                        src={membro.foto}
+                                        alt={membro.nome}
+                                        className={styles.cardImagem}
+                                    />
+                                </div>
 
-            <div className={styles.navegacao}>
-              <button
-                className={styles.botaoNav}
-                onClick={() => scroll("esquerda")}
-              >
-                ❮
-              </button>
+                                <div className={styles.cardConteudo}>
+                                    <span className={styles.cardFuncao}>{membro.objetivo}</span>
 
-              <button
-                className={styles.botaoNav}
-                onClick={() => scroll("direita")}
-              >
-                ❯
-              </button>
-            </div>
-          </div>
+                                    <h3 className={styles.cardNome}>{membro.nome}</h3>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
 
-          <div ref={scrollRef} className={styles.equipeGrid}>
-            {membro.map((membro) => (
-              <div key={membro.id} className={styles.cardEquipe}>
-                <div className={styles.cardImagemContainer}>
-                  <img
-                    src={membro.foto}
-                    alt={membro.nome}
-                    className={styles.cardImagem}
-                  />
-                </div>
+                <section className={styles.integracaoSection}>
+                    <div className={styles.integracaoCard}>
+                        <h2 className={styles.integracaoTitulo}>
+                            {idioma === 'pt'
+                                ? 'A Integração Técnica como '
+                                : 'Technical Integration as a '}
 
-                <div className={styles.cardConteudo}>
-                  <span className={styles.cardFuncao}>{membro.objetivo}</span>
+                            <span>{idioma === 'pt' ? 'Pilar' : 'Pillar'}</span>
+                        </h2>
 
-                  <h3 className={styles.cardNome}>{membro.nome}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+                        <div className={styles.integracaoLista}>
+                            <div className={styles.integracaoItem}>
+                                <div className={styles.integracaoIcone}>✣</div>
 
-        <section className={styles.integracaoSection}>
-          <div className={styles.integracaoCard}>
-            <h2 className={styles.integracaoTitulo}>
-              A Integração Técnica como <span>Pilar</span>
-            </h2>
+                                <div>
+                                    <h3>
+                                        {idioma === 'pt'
+                                            ? 'Conectividade de Dados'
+                                            : 'Data Connectivity'}
+                                    </h3>
 
-            <div className={styles.integracaoLista}>
-              <div className={styles.integracaoItem}>
-                <div className={styles.integracaoIcone}>✣</div>
+                                    <p>
+                                        {idioma === 'pt'
+                                            ? 'Nossos sistemas integram e organizam informações literárias de forma contínua, permitindo uma navegação fluida entre conteúdos teóricos, análises e um questionário para estudo.'
+                                            : 'Our systems integrate and continuously organize literary information, enabling a smooth navigation between theoretical content, analyses, and a study questionnaire.'}
+                                    </p>
+                                </div>
+                            </div>
 
-                <div>
-                  <h3>Conectividade de Dados</h3>
+                            <div className={styles.integracaoItem}>
+                                <div className={styles.integracaoIcone}>✦</div>
 
-                  <p>
-                    Nossos sistemas de backend sincronizam o progresso do aluno
-                    entre teoria e prática de engenharia instantaneamente.
-                  </p>
-                </div>
-              </div>
+                                <div>
+                                    <h3>
+                                        {idioma === 'pt'
+                                            ? 'Estética Funcional'
+                                            : 'Functional Aesthetics'}
+                                    </h3>
 
-              <div className={styles.integracaoItem}>
-                <div className={styles.integracaoIcone}>✦</div>
-
-                <div>
-                  <h3>Estética Funcional</h3>
-
-                  <p>
-                    Cada componente da interface segue princípios ergonômicos
-                    para reduzir a carga cognitiva durante estudos intensos.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-
+                                    <p>
+                                        {idioma === 'pt'
+                                            ? 'Cada elemento da interface foi projetado com foco na experiência de leitura, combinando clareza visual e usabilidade para tornar o aprendizado mais intuitivo e envolvente.'
+                                            : 'Each element of the interface was designed with a focus on the reading experience, combining visual clarity and usability to make learning more intuitive and engaging.'}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    );
 }
 
 export default Sobre;
