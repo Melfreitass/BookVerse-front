@@ -1,19 +1,25 @@
 import styles from './Biblioteca.module.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { buscarLivros } from '../../services/api';
+import { buscarBibliotecaIntegrada } from '../../services/api';
 
 function Biblioteca() {
     const [livros, setLivros] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [erro, setErro] = useState(false);
 
     useEffect(() => {
         async function carregarLivros() {
             try {
-                const livrosData = await buscarLivros();
-                setLivros(livrosData);
+                const resposta = await buscarBibliotecaIntegrada();
+
+                const livrosFormatados = resposta.flatMap((grupo) => grupo.conteudo);
+
+                setLivros(livrosFormatados);
             } catch (error) {
-                console.error('Erro ao carregar livros:', error);
+                console.error(error);
+
+                setErro(true);
             } finally {
                 setLoading(false);
             }
@@ -23,7 +29,11 @@ function Biblioteca() {
     }, []);
 
     if (loading) {
-        return <p className={styles.loading}>Carregando...</p>;
+        return <div className={styles.loading}>Carregando biblioteca...</div>;
+    }
+
+    if (erro) {
+        return <div className={styles.loading}>Erro ao carregar biblioteca.</div>;
     }
 
     return (
@@ -46,12 +56,15 @@ function Biblioteca() {
                 </section>
 
                 <section className={styles.gridLivros}>
-                    {livros.map((livro) => (
-                        <Link to={`/livro/${livro.id}`} key={livro.id} className={styles.linkCard}>
+                    {livros.map((livro, index) => (
+                        <Link
+                            to={`/livro/${livro.id || index}`}
+                            key={index}
+                            className={styles.linkCard}>
                             <div className={styles.cardLivro}>
                                 <div className={styles.imagemContainer}>
                                     <img
-                                        src={livro.capa_url}
+                                        src={livro.capa_url || '/capas/livroPadrao.png'}
                                         alt={livro.titulo}
                                         className={styles.imagemLivro}
                                     />
