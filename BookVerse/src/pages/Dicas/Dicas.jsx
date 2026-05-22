@@ -2,6 +2,7 @@ import styles from './Dicas.module.css';
 import livro from '../../assets/livro.png';
 import { useEffect, useState } from 'react';
 import { buscarCuriosidades } from '../../services/api';
+import CardDicas from '../../components/CardDicas/CardDicas';
 
 function Dicas({ idioma }) {
     const [curiosidades, setCuriosidades] = useState([]);
@@ -80,17 +81,12 @@ function Dicas({ idioma }) {
 
                 <div className={styles.temasGrid}>
                     {temasRedacao.map((item) => (
-                        <div className={styles.temaCard} key={item.id}>
-                            <div className={styles.temaContent}>
-                                <span>
-                                    {idioma === 'pt' ? item.categoria_pt : item.categoria_en}
-                                </span>
-
-                                <h3>{idioma === 'pt' ? item.titulo_pt : item.titulo_en}</h3>
-
-                                <p>{idioma === 'pt' ? item.conteudo_pt : item.conteudo_en}</p>
-                            </div>
-                        </div>
+                        <CardDicas
+                            key={item.id}
+                            categoria={idioma === 'pt' ? item.categoria_pt : item.categoria_en}
+                            titulo={idioma === 'pt' ? item.titulo_pt : item.titulo_en}
+                            conteudo={idioma === 'pt' ? item.conteudo_pt : item.conteudo_en}
+                        />
                     ))}
                 </div>
             </section>
@@ -108,17 +104,12 @@ function Dicas({ idioma }) {
 
                 <div className={styles.curiosidadesGrid}>
                     {curiosidadesLista.map((item) => (
-                        <div className={styles.curiosidadeCard} key={item.id}>
-                            <div className={styles.curiosidadeContent}>
-                                <span>
-                                    {idioma === 'pt' ? item.categoria_pt : item.categoria_en}
-                                </span>
-
-                                <h3>{idioma === 'pt' ? item.titulo_pt : item.titulo_en}</h3>
-
-                                <p>{idioma === 'pt' ? item.conteudo_pt : item.conteudo_en}</p>
-                            </div>
-                        </div>
+                        <CardDicas
+                            key={item.id}
+                            categoria={idioma === 'pt' ? item.categoria_pt : item.categoria_en}
+                            titulo={idioma === 'pt' ? item.titulo_pt : item.titulo_en}
+                            conteudo={idioma === 'pt' ? item.conteudo_pt : item.conteudo_en}
+                        />
                     ))}
                 </div>
             </section>
@@ -136,13 +127,12 @@ function Dicas({ idioma }) {
 
                 <div className={styles.cards}>
                     {dicasLista.map((item) => (
-                        <div className={styles.cardGrande} key={item.id}>
-                            <span>{idioma === 'pt' ? item.categoria_pt : item.categoria_en}</span>
-
-                            <h2>{idioma === 'pt' ? item.titulo_pt : item.titulo_en}</h2>
-
-                            <p>{idioma === 'pt' ? item.conteudo_pt : item.conteudo_en}</p>
-                        </div>
+                        <CardDicas
+                            key={item.id}
+                            categoria={idioma === 'pt' ? item.categoria_pt : item.categoria_en}
+                            titulo={idioma === 'pt' ? item.titulo_pt : item.titulo_en}
+                            conteudo={idioma === 'pt' ? item.conteudo_pt : item.conteudo_en}
+                        />
                     ))}
                 </div>
             </section>

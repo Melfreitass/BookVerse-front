@@ -87,30 +87,6 @@
     gap: 24px;
 }
 
-.cardGrande {
-    background: #111b34;
-    padding: 30px;
-    border-radius: 20px;
-    border-left: 4px solid #de6246;
-}
-
-.cardGrande span {
-    color: #de6246;
-    font-size: 13px;
-    text-transform: uppercase;
-}
-
-.cardGrande h2 {
-    color: white;
-    margin: 18px 0;
-    font-size: 28px;
-}
-
-.cardGrande p {
-    color: #c8c8d0;
-    line-height: 1.7;
-}
-
 .temasSection {
     padding: 20px 0 80px;
 }
@@ -140,39 +116,6 @@
     gap: 24px;
 }
 
-.temaCard {
-    background: #111b34;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: 0.3s;
-}
-
-.temaCard:hover {
-    transform: translateY(-6px);
-}
-
-.temaContent {
-    padding: 24px;
-}
-
-.temaContent span {
-    color: #de6246;
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.temaContent h3 {
-    color: white;
-    margin: 16px 0;
-    font-size: 22px;
-}
-
-.temaContent p {
-    color: #c8c8d0;
-    line-height: 1.7;
-}
-
 .curiosidadesSection {
     padding: 20px 0 80px;
 }
@@ -197,37 +140,6 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 24px;
-}
-
-.curiosidadeCard {
-    background: #111b34;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.curiosidadeContent {
-    padding: 24px;
-}
-
-.curiosidadeContent span {
-    color: #de6246;
-    font-size: 12px;
-    text-transform: uppercase;
-}
-
-.curiosidadeContent h3 {
-    color: white;
-    margin: 14px 0;
-    font-size: 22px;
-}
-
-.curiosidadeContent p {
-    color: #c8c8d0;
-    line-height: 1.7;
-}
-
-.curiosidadeCard:first-child {
-    grid-row: span 2;
 }
 
 .loading {
