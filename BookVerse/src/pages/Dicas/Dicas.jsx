@@ -1,8 +1,12 @@
 import styles from './Dicas.module.css';
 import livro from '../../assets/livro.png';
+
 import { useEffect, useState } from 'react';
+
 import { buscarCuriosidades } from '../../services/api';
+
 import CardDicas from '../../components/CardDicas/CardDicas';
+import CardTema from '../../components/CardTema/CardTema';
 
 function Dicas({ idioma }) {
     const [curiosidades, setCuriosidades] = useState([]);
@@ -81,7 +85,7 @@ function Dicas({ idioma }) {
 
                 <div className={styles.temasGrid}>
                     {temasRedacao.map((item) => (
-                        <CardDicas
+                        <CardTema
                             key={item.id}
                             categoria={idioma === 'pt' ? item.categoria_pt : item.categoria_en}
                             titulo={idioma === 'pt' ? item.titulo_pt : item.titulo_en}
