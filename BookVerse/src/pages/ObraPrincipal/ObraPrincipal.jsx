@@ -51,20 +51,12 @@ function ObraPrincipal({ idioma }) {
         carregarDados();
     }, []);
 
-    if (!livro) {
-        return (
-            <p className={styles.loading}>
-                Carregando...
-            </p>
-        );
-    }
-
   return (
     <main className={styles.obraPrincipal}>
       <section className={styles.infoPrincipal}>
         <div className={styles.bgTitulo}>
             <h1 className={styles.titulo}>
-                {livro.titulo.toUpperCase()}
+                {livro ? livro.titulo.toUpperCase() : "..."}
             </h1>
         </div>
 
@@ -76,7 +68,7 @@ function ObraPrincipal({ idioma }) {
           <div className={styles.linha}></div>
 
           <p className={styles.frase}>
-            {idioma === "pt" ? livro.descricao_pt : livro.descricao_en}
+            {livro ? idioma === "pt" ? livro.descricao_pt : livro.descricao_en : "Carregando descrição"}
           </p>
         </div>
       </section>
@@ -88,14 +80,15 @@ function ObraPrincipal({ idioma }) {
 
                 <div>
                     <h3 className={styles.resumoTitulo}>
-                        {idioma ==="pt" ? "Resumo Dinâmico" : "Dynamic Summary"}
+                        {livro ? idioma ==="pt" ? "Resumo Dinâmico" : "Dynamic Summary" : "Carregando Resumo"}
                     </h3>
                 </div>
             </div>
 
             <p className={styles.resumoTexto}>
-                {
+                { livro ?
                     idioma === "pt" ? livro.enredo_pt || "Sem resumo disponível" : livro.enredo_en || "No summary available"
+                : "Carregando resumo..."
                 }
             </p>
 
@@ -106,7 +99,7 @@ function ObraPrincipal({ idioma }) {
                     </span>
 
                     <p>
-                        { idioma === "pt" ? livro.genero_pt : livro.genero_en
+                        { livro ? idioma === "pt" ? livro.genero_pt : livro.genero_en : "..."
                         }
                     </p>
                 </div>
@@ -116,7 +109,7 @@ function ObraPrincipal({ idioma }) {
                         {idioma === "pt" ? "ANO" : "YEAR"}
                     </span>
 
-                    <p>{livro.ano}</p>
+                    <p>{livro ? livro.ano : "..."}</p>
                 </div>
 
                 <div className={styles.infoBox}>
@@ -125,8 +118,9 @@ function ObraPrincipal({ idioma }) {
                     </span>
 
                     <p>
-                        {
+                        { livro ?
                             idioma === "pt" ? livro.movimento_pt : livro.movimento_en
+                            : "..."
                         }
                 </p>
                 </div>
@@ -134,7 +128,7 @@ function ObraPrincipal({ idioma }) {
         </div>
 
         <div className={styles.capaLivro}>
-            <img src={livro.capa_url} alt={livro.titulo} />
+            <img src={livro?.capa_url} alt={livro?.titulo || "Carregando"} />
         </div>
 
       </section>
