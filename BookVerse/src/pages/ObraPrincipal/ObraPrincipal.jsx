@@ -1,21 +1,37 @@
 import styles from "./ObraPrincipal.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { NavLink } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
-import { FaPlay, FaBookOpen, FaBrain, FaArrowRight } from "react-icons/fa";
+import { FaChevronLeft, FaBookOpen, FaChevronRight } from "react-icons/fa";
 import { buscarLivros, buscarPersonagem, buscarCuriosidades, buscarSimulados } from "../../services/api"
 import CardPersonagem from "../../components/CardPersonagem/CardPersonagem"
 
 function ObraPrincipal({ idioma }) {
     const navigate = useNavigate();
+    const scrollRef = useRef(null);
     const [livro, setLivro] = useState(null)
     const [personagem, setPersonagem] = useState([]);
     const [curiosidades, setCuriosidades] = useState([]);
     const [simulados, setSimulados] = useState([]);
 
+    function scrollLeft() {
+        scrollRef.current.scrollBy({
+            left: -320,
+            bahavior: "smooth",
+        })
+    }
+
+    function scrollRight() {
+        scrollRef.current.scrollBy({
+            left: 320,
+            bahavior: "smooth",
+        })
+    }
+
     useEffect(() => {
         async function carregarDados() {
             try {
+
 
                 //livro
                 const livrosData =
@@ -145,19 +161,46 @@ function ObraPrincipal({ idioma }) {
                     : "Character Analysis"
                 }
             </h2>
+
+            <div className={styles.scrollButtons}>
+
+            <button
+                onClick={scrollLeft}
+
+                className={styles.scrollBtn}
+            >
+                <FaChevronLeft />
+            </button>
+
+            <button
+                onClick={scrollRight}
+
+                className={styles.scrollBtn}
+            >
+                <FaChevronRight />
+            </button>
+
+        </div>
         </div>
 
-        <div className={styles.personagensGrid}>
-            {
-                personagem.map((item) => (
-                    <CardPersonagem
+        <div
+        className={styles.personagensGrid}
+
+        ref={scrollRef}
+    >
+
+        {
+            personagem.map((item) => (
+
+                <CardPersonagem
                     key={item.id}
                     personagem={item}
                     idioma={idioma}
-                    />
-                ))
-            }
-        </div>
+                />
+            ))
+        }
+
+    </div>
       </section>
 
       <section className={styles.contextoSection}>
