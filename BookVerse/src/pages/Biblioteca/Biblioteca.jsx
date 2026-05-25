@@ -13,7 +13,7 @@ function Biblioteca() {
             try {
                 const resposta = await buscarBibliotecaIntegrada();
 
-                const livrosFormatados = resposta.flatMap((grupo) => grupo.conteudo);
+                const livrosFormatados = resposta.flatMap((livro) => livro.conteudo);
 
                 setLivros(livrosFormatados);
             } catch (error) {
@@ -73,7 +73,7 @@ function Biblioteca() {
                                 <div className={styles.cardConteudo}>
                                     <h3>{livro.titulo}</h3>
 
-                                    <p>{livro.autor}</p>
+                                    <p>{livro.autor?.nome}</p>
                                 </div>
                             </div>
                         </Link>
