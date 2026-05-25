@@ -361,3 +361,205 @@
     font-size: 1.2rem;
     font-family: "Manrope", sans-serif;
 }
+
+@media (max-width: 1024px) {
+    .main {
+        padding: 0 2rem;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cardGrande {
+        width: 100%;
+        max-width: 700px;
+        height: 380px;
+    }
+
+    .cardsLado {
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .cardPequeno {
+        width: 100%;
+    }
+
+    .tituloPrincipal {
+        font-size: 2.5rem;
+    }
+
+    .integracaoCard {
+        padding: 3rem;
+    }
+
+    .integracaoTitulo {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main {
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+    }
+
+    .tituloPrincipal {
+        font-size: 2rem;
+    }
+
+    .texto {
+        font-size: 0.95rem;
+    }
+
+    .cards {
+        gap: 1.5rem;
+    }
+
+    .cardGrande {
+        height: 320px;
+        border-radius: 24px;
+    }
+
+    .overlay h2 {
+        font-size: 1.5rem;
+    }
+
+    .overlay p {
+        font-size: 0.85rem;
+    }
+
+    .cardsLado {
+        flex-direction: column;
+    }
+
+    .cardPequeno {
+        padding: 1.5rem;
+        border-radius: 24px;
+    }
+
+    .cardPequeno h3 {
+        font-size: 1.3rem;
+    }
+
+    .equipeSection {
+        margin-top: 4rem;
+    }
+
+    .equipeHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .equipeTitulo {
+        font-size: 2rem;
+    }
+
+    .equipeSubtitulo {
+        font-size: 0.95rem;
+    }
+
+    .cardEquipe {
+        min-width: 260px;
+        max-width: 260px;
+    }
+
+    .cardImagemContainer {
+        height: 220px;
+    }
+
+    .integracaoCard {
+        padding: 2rem;
+        border-radius: 24px;
+    }
+
+    .integracaoTitulo {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .integracaoItem {
+        gap: 1rem;
+    }
+
+    .integracaoItem h3 {
+        font-size: 1.1rem;
+    }
+
+    .integracaoItem p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main {
+        padding: 0 1rem;
+    }
+
+    .subtitulo {
+        font-size: 0.75rem;
+    }
+
+    .tituloPrincipal {
+        font-size: 1.7rem;
+    }
+
+    .texto {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .cardGrande {
+        height: 280px;
+    }
+
+    .overlay {
+        padding: 1.2rem;
+    }
+
+    .overlay h2 {
+        font-size: 1.3rem;
+    }
+
+    .cardPequeno h3 {
+        font-size: 1.1rem;
+    }
+
+    .equipeTitulo {
+        font-size: 1.7rem;
+    }
+
+    .cardEquipe {
+        min-width: 220px;
+        max-width: 220px;
+        padding: 0.8rem;
+    }
+
+    .cardImagemContainer {
+        height: 180px;
+    }
+
+    .cardNome {
+        font-size: 1.1rem;
+    }
+
+    .cardDescricao {
+        font-size: 0.8rem;
+    }
+
+    .integracaoTitulo {
+        font-size: 1.7rem;
+    }
+
+    .integracaoCard {
+        padding: 1.5rem;
+    }
+
+    .integracaoIcone {
+        width: 40px;
+        height: 40px;
+    }
+}
