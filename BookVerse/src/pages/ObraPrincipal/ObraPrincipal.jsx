@@ -1,11 +1,13 @@
 import styles from "./ObraPrincipal.module.css";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { FaPlay, FaBookOpen, FaBrain, FaArrowRight } from "react-icons/fa";
 import { buscarLivros, buscarPersonagem, buscarCuriosidades, buscarSimulados } from "../../services/api"
 import CardPersonagem from "../../components/CardPersonagem/CardPersonagem"
 
 function ObraPrincipal({ idioma }) {
+    const navigate = useNavigate();
     const [livro, setLivro] = useState(null)
     const [personagem, setPersonagem] = useState([]);
     const [curiosidades, setCuriosidades] = useState([]);
@@ -206,7 +208,50 @@ function ObraPrincipal({ idioma }) {
 </section>
 
       <section className={styles.videoSection}>
+            <h2 className={styles.videoTitulo}>
+                {
+                    idioma === "pt"
+                    ? "Um pouco mais sobre o livro..."
+                    : "Learn more about the book..."
+                }
+            </h2>
 
+            <div className={styles.videoContainer}>
+                {
+                    livro?.video_url ? (
+                        <inframe
+                            src={livro.video_url}
+                            title="Vídeo do livro"
+                            allowFullScreen
+                            ></inframe>
+                    ) : (
+                        <div className={styles.videoPlaceholder}>
+                            Carregando vídeo...
+                            </div>
+                    )
+                }
+            </div>
+
+            <div className={styles.videoInfo}>
+                <p>
+                    {
+                        idioma === "pt"
+                        ? "Acesse nosso simulado exclusivo sobre a obra."
+                        : "Access our exclusive quiz about the book"
+                    }
+                </p>
+
+                <div className={styles.videoButtons}>
+                    <button className={styles.btnPrincipal} 
+                    onClick={() => navigate("/simulados")}>
+                        {
+                            idioma === "pt"
+                            ? "Iniciar Simulado"
+                            : "Start Quiz"
+                        }
+                    </button>
+                </div>
+            </div>
       </section>
     </main>
   );

@@ -135,7 +135,7 @@ function Sobre({ idioma }) {
                             <div key={membro.id} className={styles.cardEquipe}>
                                 <div className={styles.cardImagemContainer}>
                                     <img
-                                        src={membro.foto}
+                                        src={membro.fotoURL}
                                         alt={membro.nome}
                                         className={styles.cardImagem}
                                     />
