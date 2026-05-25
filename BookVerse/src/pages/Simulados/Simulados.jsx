@@ -148,7 +148,7 @@ function Simulados() {
                 <div className={styles.infoEsquerda}>
                     <div className={styles.tagSimulado}> SIMULADO </div>
 
-                    <h1 className={styles.titulo}>Questões sobre o livro Vidas Secas</h1>
+                    <h1 className={styles.titulo}>Questões sobre o livro Vidas Secas.</h1>
                 </div>
 
                 <div className={styles.infoDireita}>

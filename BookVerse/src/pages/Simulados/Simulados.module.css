@@ -18,20 +18,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 4rem 2rem;
-    background:
-        radial-gradient(
-            circle at top left,
-            rgba(70, 90, 170, 0.10),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at bottom right,
-            rgba(239, 104, 85, 0.05),
-            transparent 30%
-        ),
-
-        #020b1d;
+    background:#020b1d;
 }
 
 .infoPrincipal {
@@ -98,14 +85,8 @@ body {
     width: 100%;
     padding: 2rem;
     border-radius: 32px;
-    background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.04),
-        rgba(255,255,255,0.02)
-    );
-
+    background: linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));
     border: 1px solid rgba(255,255,255,0.05);
-    backdrop-filter: blur(18px);
 }
 
 .resumoHeader {
@@ -209,12 +190,7 @@ body {
     padding: 0 1.5rem;
     border: none;
     border-radius: 14px;
-    background: linear-gradient(
-        180deg,
-        #ff8e78,
-        #EF6855
-    );
-
+    background:#EF6855;
     color: white;
     font-family: 'Manrope', sans-serif;
     font-weight: 700;
@@ -226,8 +202,7 @@ body {
 .botaoRefazer:hover,
 .btnPrincipal:hover {
     transform: translateY(-2px);
-    box-shadow:
-        0 10px 24px rgba(239,104,85,0.25);
+    box-shadow:0 10px 24px rgba(239,104,85,0.25);
 }
 
 .botoesNavegacao {
