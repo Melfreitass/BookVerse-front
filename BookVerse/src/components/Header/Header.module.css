@@ -85,3 +85,90 @@
 .desativado:hover {
     color: rgba(255,255,255,0.8);
 }
+
+/* NOTEBOOK */
+
+@media (max-width: 1366px) {
+
+    .header {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .titulo {
+        font-size: 20px;
+    }
+
+    .nav {
+        width: 50%;
+        font-size: 13px;
+    }
+
+    .nav nav {
+        gap: 55px;
+    }
+
+    .language button {
+        font-size: 0.8rem;
+    }
+}
+
+
+/* TABLET */
+
+@media (max-width: 1024px) {
+
+    .header {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .titulo {
+        font-size: 20px;
+    }
+
+    .nav {
+        width: 55%;
+        font-size: 13px;
+    }
+
+    .nav nav {
+        gap: 28px;
+    }
+
+    .language {
+        gap: 0.4rem;
+    }
+
+    .language button {
+        font-size: 0.75rem;
+    }
+}
+
+
+/* CELULAR */
+
+@media (max-width: 768px) {
+
+    .header {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .titulo {
+        font-size: 18px;
+    }
+
+    .nav {
+        width: 60%;
+        font-size: 13px;
+    }
+
+    .nav nav {
+        gap: 15px;
+    }
+
+    .language button {
+        font-size: 0.78rem;
+    }
+}
