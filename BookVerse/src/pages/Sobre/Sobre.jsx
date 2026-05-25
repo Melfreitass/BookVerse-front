@@ -142,9 +142,9 @@ function Sobre({ idioma }) {
                                 </div>
 
                                 <div className={styles.cardConteudo}>
-                                    <span className={styles.cardFuncao}>{membro.objetivo}</span>
-
                                     <h3 className={styles.cardNome}>{membro.nome}</h3>
+
+                                    <span className={styles.cardFuncao}>{membro.objetivo}</span>
                                 </div>
                             </div>
                         ))}
