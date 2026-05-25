@@ -3,7 +3,6 @@ import styles from './CardTema.module.css';
 function CardTema({ categoria, titulo, conteudo }) {
     return (
         <div className={styles.cardTema}>
-            <div className={styles.imagemTema}></div>
 
             <div className={styles.conteudoTema}>
                 <span className={styles.categoriaTema}>{categoria}</span>
