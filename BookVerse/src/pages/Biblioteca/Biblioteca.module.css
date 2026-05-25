@@ -3,7 +3,6 @@
 
 .page {
     min-height: 100vh;
-    background-color: #0e1320;
     color: #D3E4FE;
     font-family: 'Inter', sans-serif;
 }
@@ -15,63 +14,28 @@
 }
 
 .topo {
+    width: 100%;
     display: flex;
     gap: 1.5rem;
     align-items: stretch;
     margin-bottom: 3rem;
 }
 
-.filtros {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.filtro {
-    background: rgba(18, 28, 49, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 1rem;
-    min-width: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.filtro span {
-    font-size: 0.62rem;
-    color: rgba(211, 228, 254, 0.45);
-    letter-spacing: 1px;
-    margin-bottom: 0.7rem;
-    font-family: "Manrope", sans-serif;
-}
-
-.filtro button {
-    background: #0E1728;
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    color: #D3E4FE;
-    padding: 0.8rem 1rem;
-    border-radius: 10px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 0.82rem;
-    transition: 0.3s ease;
-    font-family: "Manrope", sans-serif;
-}
-
-.filtro button:hover {
-    border-color: rgba(239, 104, 85, 0.35);
-}
-
 .banner {
+    width: 100%;
     flex: 1;
-    background: linear-gradient(135deg,
-            rgba(18, 28, 49, 0.95),
-            rgba(11, 19, 34, 0.95));
+    background: linear-gradient(
+        135deg,
+        rgba(18, 28, 49, 0.95),
+        rgba(11, 19, 34, 0.95)
+    );
     border-radius: 18px;
     padding: 2rem;
+
     display: flex;
     align-items: center;
+    justify-content: center;
+
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -81,6 +45,10 @@
     font-weight: 500;
     color: #D3E4FE;
     font-family: "Noto Serif", serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .gridLivros {
@@ -114,12 +82,17 @@
     height: 330px;
     overflow: hidden;
     background: #0e1320;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem;
 }
 
 .imagemLivro {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: 0.4s ease;
 }
 
@@ -129,6 +102,20 @@
 
 .cardConteudo {
     padding: 1rem;
+}
+
+.cardConteudo a {
+    text-decoration: none;
+    color: #D3E4FE;
+}
+
+.cardConteudo a:hover {
+    color: #EF6855;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .cardConteudo h3 {
@@ -147,16 +134,36 @@
     font-family: "Manrope", sans-serif;
 }
 
+@media (max-width: 1200px) {
+    .gridLivros {
+        grid-template-columns: repeat(2, minmax(260px, 300px));
+        gap: 2.5rem;
+        max-width: 700px;
+    }
 
-/* RESPONSIVO */
+    .cardLivro {
+        width: 100%;
+        max-width: 300px;
+    }
+}
 
 @media (max-width: 1000px) {
     .topo {
         flex-direction: column;
     }
 
+    .banner {
+        width: 100%;
+    }
+
     .banner h2 {
         font-size: 1.4rem;
+    }
+
+    .gridLivros {
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+        gap: 2rem;
+        width: 100%;
     }
 }
 
@@ -165,9 +172,92 @@
         padding: 2rem 1rem 3rem;
     }
 
-    .nav {
+    .filtros {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .filtro {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .banner {
+        padding: 1.5rem;
+    }
+
+    .banner h2 {
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+
+    .gridLivros {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+        max-width: 100%;
+    }
+
+    .cardLivro {
+        width: 100%;
+        max-width: 340px;
+        height: auto;
+    }
+
+    .imagemContainer {
+        height: 300px;
+    }
+
+    .cardConteudo {
+        padding: 1rem;
+    }
+
+    .cardConteudo h3 {
+        font-size: 1rem;
+    }
+
+    .cardConteudo p {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main {
+        padding: 1.5rem 0.8rem 2.5rem;
+    }
+
+    .topo {
         gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .banner {
+        border-radius: 14px;
+        padding: 1.2rem;
+    }
+
+    .banner h2 {
+        font-size: 1rem;
+    }
+
+    .gridLivros {
+        gap: 1.5rem;
+    }
+
+    .cardLivro {
+        max-width: 100%;
+        border-radius: 14px;
+    }
+
+    .imagemContainer {
+        height: 260px;
+        padding: 0.6rem;
+    }
+
+    .cardConteudo h3 {
+        font-size: 0.95rem;
+    }
+
+    .cardConteudo p {
+        font-size: 0.65rem;
     }
 }
