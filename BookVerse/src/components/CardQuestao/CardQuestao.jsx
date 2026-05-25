@@ -1,6 +1,7 @@
 import styles from './CardQuestao.module.css';
 
 export default function CardQuestao({
+    idioma,
     pergunta,
     alternativas,
     correta,
@@ -47,8 +48,9 @@ export default function CardQuestao({
             {respostaSelecionada && (
                 <section className={styles.explicacao}>
                     <div className={styles.explicacaoTexto}>
-                        <h2>Explicação Comentada</h2>
-
+                        <h3 className={styles.tituloExplicacao}>
+                            {idioma === 'pt' ? 'Explicação Comentada' : 'Commented Explanation'}
+                        </h3>
                         <p>{explicacao}</p>
                     </div>
 

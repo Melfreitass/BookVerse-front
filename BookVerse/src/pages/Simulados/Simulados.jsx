@@ -4,7 +4,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import CardQuestao from '../../components/CardQuestao/CardQuestao';
 import { buscarSimulados } from '../../services/api';
 
-function Simulados() {
+function Simulados({ idioma }) {
     const [simulados, setSimulados] = useState([]);
     const [questaoAtual, setQuestaoAtual] = useState(0);
     const [erro, setErro] = useState(false);
@@ -16,9 +16,11 @@ function Simulados() {
         async function carregarDados() {
             try {
                 const simuladosData = await buscarSimulados();
+
                 setSimulados(simuladosData);
             } catch (error) {
                 console.error('Erro ao carregar simulados:', error);
+
                 setErro(true);
             }
         }
@@ -57,18 +59,27 @@ function Simulados() {
         }
     };
 
-    if (erro) return <p className={styles.loading}>Erro ao carregar simulados</p>;
+    if (erro)
+        return (
+            <p className={styles.loading}>
+                {idioma === 'pt' ? 'Erro ao carregar simulados' : 'Error loading quizzes'}
+            </p>
+        );
 
     if (!simulados || simulados.length === 0)
-        return <p className={styles.loading}>Carregando...</p>;
+        return <p className={styles.loading}>{idioma === 'pt' ? 'Carregando...' : 'Loading...'}</p>;
 
     if (concluido) {
         return (
             <div className={styles.obraPrincipal}>
                 <div className={styles.infoPrincipalResultado}>
-                    <div className={styles.tagSimulado}>RESULTADO FINAL</div>
+                    <div className={styles.tagSimulado}>
+                        {idioma === 'pt' ? 'RESULTADO FINAL' : 'FINAL RESULT'}
+                    </div>
 
-                    <h1 className={styles.tituloResultado}>Simulado Concluído</h1>
+                    <h1 className={styles.tituloResultado}>
+                        {idioma === 'pt' ? 'Simulado Concluído' : 'Quiz Completed'}
+                    </h1>
                 </div>
 
                 <div className={styles.resumoArea}>
@@ -76,7 +87,9 @@ function Simulados() {
                         <div className={styles.resumoHeader}>
                             <span className={styles.iconResumo}>📊</span>
 
-                            <h3 className={styles.resumoTitulo}>Estatísticas Gerais</h3>
+                            <h3 className={styles.resumoTitulo}>
+                                {idioma === 'pt' ? 'Estatísticas Gerais' : 'General Statistics'}
+                            </h3>
                         </div>
 
                         <div className={styles.graficoSection}>
@@ -86,11 +99,11 @@ function Simulados() {
                                         <Pie
                                             data={[
                                                 {
-                                                    name: 'Acertos',
+                                                    name: idioma === 'pt' ? 'Acertos' : 'Correct',
                                                     value: totalAcertos,
                                                 },
                                                 {
-                                                    name: 'Erros',
+                                                    name: idioma === 'pt' ? 'Erros' : 'Wrong',
                                                     value: totalErros,
                                                 },
                                             ]}
@@ -112,20 +125,21 @@ function Simulados() {
                                     <span className={styles.porcentagemTexto}>
                                         {porcentagemAcerto}%
                                     </span>
-
                                 </div>
                             </div>
                         </div>
 
                         <div className={styles.infoLivro}>
                             <div className={styles.infoBox}>
-                                <span>TOTAL</span>
+                                <span>{idioma === 'pt' ? 'TOTAL' : 'TOTAL'}</span>
 
-                                <p>{simulados.length} Questões</p>
+                                <p>
+                                    {simulados.length} {idioma === 'pt' ? 'Questões' : 'Questions'}
+                                </p>
                             </div>
 
                             <div className={styles.infoBox}>
-                                <span>ACERTOS</span>
+                                <span>{idioma === 'pt' ? 'ACERTOS' : 'CORRECT'}</span>
 
                                 <p style={{ color: '#EF6855' }}>{totalAcertos}</p>
                             </div>
@@ -134,7 +148,7 @@ function Simulados() {
                         <button
                             className={styles.botaoRefazer}
                             onClick={() => window.location.reload()}>
-                            RECOMEÇAR JORNADA
+                            {idioma === 'pt' ? 'RECOMEÇAR JORNADA' : 'RESTART JOURNEY'}
                         </button>
                     </div>
                 </div>
@@ -146,23 +160,35 @@ function Simulados() {
         <div className={styles.obraPrincipal}>
             <div className={styles.infoPrincipal}>
                 <div className={styles.infoEsquerda}>
-                    <div className={styles.tagSimulado}> SIMULADO </div>
+                    <div className={styles.tagSimulado}>
+                        {idioma === 'pt' ? 'SIMULADO' : 'QUIZ'}
+                    </div>
 
-                    <h1 className={styles.titulo}>Questões sobre o livro Vidas Secas</h1>
+                    <h1 className={styles.titulo}>
+                        {idioma === 'pt'
+                            ? 'Questões sobre o livro Vidas Secas'
+                            : 'Questions about the book Barren Lives'}
+                    </h1>
                 </div>
 
                 <div className={styles.infoDireita}>
                     <span className={styles.questaoTexto}>
-                        QUESTÃO {questaoAtual + 1} DE {simulados.length}
+                        {idioma === 'pt'
+                            ? `QUESTÃO ${questaoAtual + 1} DE ${simulados.length}`
+                            : `QUESTION ${questaoAtual + 1} OF ${simulados.length}`}
                     </span>
-
                 </div>
             </div>
 
             <div className={styles.resumoArea}>
                 {questoesPendentes.length > 0 && (
                     <div className={styles.alertaPendentes}>
-                        <p>⚠️ Resolva antes de finalizar:</p>
+                        <p>
+                            ⚠️{' '}
+                            {idioma === 'pt'
+                                ? 'Resolva antes de finalizar:'
+                                : 'Answer before finishing:'}
+                        </p>
 
                         <div className={styles.listaPendentes}>
                             {questoesPendentes.map((q) => (
@@ -187,28 +213,53 @@ function Simulados() {
                         gap: '1rem',
                     }}>
                     <CardQuestao
-                        pergunta={simulados[questaoAtual].pergunta_pt}
+                        idioma={idioma}
+                        pergunta={
+                            idioma === 'pt'
+                                ? simulados[questaoAtual].pergunta_pt
+                                : simulados[questaoAtual].pergunta_en
+                        }
                         alternativas={[
                             {
                                 id: 'A',
-                                texto: simulados[questaoAtual].opcao_a,
+                                texto:
+                                    idioma === 'pt'
+                                        ? simulados[questaoAtual].opcao_a
+                                        : simulados[questaoAtual].opcao_a_en,
                             },
                             {
                                 id: 'B',
-                                texto: simulados[questaoAtual].opcao_b,
+                                texto:
+                                    idioma === 'pt'
+                                        ? simulados[questaoAtual].opcao_b
+                                        : simulados[questaoAtual].opcao_b_en,
                             },
                             {
                                 id: 'C',
-                                texto: simulados[questaoAtual].opcao_c,
+                                texto:
+                                    idioma === 'pt'
+                                        ? simulados[questaoAtual].opcao_c
+                                        : simulados[questaoAtual].opcao_c_en,
                             },
                             {
                                 id: 'D',
-                                texto: simulados[questaoAtual].opcao_d,
+                                texto:
+                                    idioma === 'pt'
+                                        ? simulados[questaoAtual].opcao_d
+                                        : simulados[questaoAtual].opcao_d_en,
                             },
                         ]}
                         correta={simulados[questaoAtual].resposta_correta}
-                        explicacao={simulados[questaoAtual].explicacao_pt}
-                        dica={'Analise as variáveis com cuidado.'}
+                        explicacao={
+                            idioma === 'pt'
+                                ? simulados[questaoAtual].explicacao_pt
+                                : simulados[questaoAtual].explicacao_en
+                        }
+                        dica={
+                            idioma === 'pt'
+                                ? 'Analise as variáveis com cuidado.'
+                                : 'Analyze the variables carefully.'
+                        }
                         respostaSelecionada={respostas[simulados[questaoAtual].id]?.resposta}
                         aoResponder={(resposta) =>
                             responderQuestao(simulados[questaoAtual].id, {
@@ -224,7 +275,7 @@ function Simulados() {
                         <button
                             className={styles.btnSecundario}
                             onClick={() => questaoAtual > 0 && setQuestaoAtual(questaoAtual - 1)}>
-                            ←  ANTERIOR
+                            {idioma === 'pt' ? '← ANTERIOR' : '← PREVIOUS'}
                         </button>
 
                         <button
@@ -235,8 +286,12 @@ function Simulados() {
                                     : setQuestaoAtual(questaoAtual + 1)
                             }>
                             {questaoAtual === simulados.length - 1
-                                ? 'FINALIZAR'
-                                : 'PRÓXIMA QUESTÃO '}
+                                ? idioma === 'pt'
+                                    ? 'FINALIZAR'
+                                    : 'FINISH'
+                                : idioma === 'pt'
+                                  ? 'PRÓXIMA QUESTÃO'
+                                  : 'NEXT QUESTION'}
                         </button>
                     </div>
                 </div>

@@ -98,10 +98,12 @@
     flex: 1;
 }
 
-.explicacaoTexto h2 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    font-family: "Noto Serif", serif;
+.tituloExplicacao {
+    color: white;
+
+    font-family: 'Noto Serif', serif;
+
+    white-space: nowrap;
 }
 
 .explicacaoTexto p {
