@@ -42,7 +42,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
     margin-top: 5rem;
 }
 
@@ -221,101 +221,62 @@
 
 .contextoSection {
     width: 90%;
-
     max-width: 1200px;
-
-    margin-top: 6rem;
-
     background: rgba(20, 30, 50, 0.72);
-
     border-radius: 28px;
-
-    padding: 3rem;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
-    gap: 4rem;
+    gap: 2rem;
 }
-
 
 .contextoTexto {
     flex: 1;
-
     display: flex;
-
     flex-direction: column;
-
-    gap: 1.5rem;
+    gap: 1rem;
 }
-
 
 .contextoTitulo {
     color: white;
-
     font-size: 2rem;
-
     font-family: "Noto Serif", serif;
-
     font-weight: 600;
 }
 
 
 .contextoDescricao {
     color: rgba(255,255,255,0.72);
-
     line-height: 2;
-
     font-size: 1rem;
-
     font-family: "Manrope", sans-serif;
 }
 
-
 .anoCard {
-    min-width: 260px;
-
-    height: 260px;
-
-    border-radius: 24px;
-
+    min-width: 200px;
+    height: 200px;
+    border-radius: 20px;
     background: rgba(255,255,255,0.04);
-
     border: 1px solid rgba(255,255,255,0.08);
-
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
-
     text-align: center;
+    padding: 1rem;
 }
-
 
 .anoCard h2 {
     color: #EF6855;
-
-    font-size: 4rem;
-
+    font-size: 3rem;
     font-family: "Noto Serif", serif;
 }
 
-
 .anoCard span {
     color: rgba(255,255,255,0.6);
-
-    letter-spacing: 3px;
-
-    font-size: 0.8rem;
-
-    margin-top: 0.5rem;
-
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+    margin-top: 0.4rem;
     font-family: "Manrope", sans-serif;
 }
 
@@ -408,13 +369,21 @@
 .autorSection {
     width: 90%;
     max-width: 1200px;
-    margin-top: 5rem;
+    margin-top: 2rem;
     background: rgba(20, 30, 50, 0.72);
     border-radius: 28px;
     padding: 3rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: 0.3s;
+}
+
+.autorSection:hover {
+    transform: translateY(-4px);
+
+    border: 1px solid rgba(239,104,85,0.25);
 }
 
 .autorSection h2 {
@@ -434,7 +403,7 @@
 .analiseSection {
     width: 90%;
     max-width: 1200px;
-    margin-top: 5rem;
+    margin-top: 1.5rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
@@ -468,46 +437,37 @@
     font-size: 0.9rem;
 }
 
-/* NOTEBOOK */
 @media (max-width: 1366px) {
 
     .obraPrincipal {
-        padding-top: 5rem;
-    }
-
-    .bgTitulo {
-        width: 60%;
+        padding-top: 4rem;
     }
 
     .titulo {
         font-size: 6rem;
     }
 
-    .infoTitulo {
-        margin-top: 2rem;
-        gap: 0.7rem;
+    .bgTitulo {
+        width: 55%;
     }
 
-    .subtitulo {
-        font-size: 0.7rem;
-        letter-spacing: 3px;
+    .infoTitulo {
+        margin-top: 1.5rem;
     }
 
     .frase {
-        max-width: 700px;
-        font-size: 0.9rem;
-        line-height: 1.6;
+        font-size: 0.85rem;
+        max-width: 550px;
     }
 
     .resumoArea {
-        width: 92%;
-        margin-top: 4rem;
-        gap: 2rem;
+        margin-top: 3rem;
+        gap: 1.5rem;
     }
 
     .resumoCard {
-        padding: 1.5rem;
-        gap: 1.5rem;
+        padding: 1.3rem;
+        gap: 1.3rem;
     }
 
     .resumoTitulo {
@@ -515,12 +475,8 @@
     }
 
     .resumoTexto {
-        font-size: 0.9rem;
+        font-size: 0.84rem;
         line-height: 1.7;
-    }
-
-    .infoLivro {
-        gap: 0.7rem;
     }
 
     .infoBox {
@@ -528,113 +484,115 @@
     }
 
     .infoBox p {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .capaLivro {
-        width: 240px;
-        min-width: 240px;
+        width: 210px;
+        min-width: 210px;
         padding: 1rem;
     }
 
-    .capaLivro img {
-        width: 100%;
-    }
-
     .personagensSection {
-        margin-top: 4rem;
-        gap: 2rem;
+        margin-top: 3rem;
+        gap: 1.5rem;
     }
 
     .personagensTitulo {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
+    }
+
+    .personagensGrid {
+        gap: 1rem;
     }
 
     .contextoSection {
-        margin-top: 4rem;
-        padding: 2rem;
-        gap: 2rem;
+        margin-top: 2rem;
+        padding: 1.5rem;
+        gap: 1.5rem;
+        transition: 0.3s;
+        border: 1px solid rgba(255,255,255,0.06);
     }
 
+    .contextoSection:hover {
+    transform: translateY(-4px);
+
+    border: 1px solid rgba(239,104,85,0.25);
+}
+
     .contextoTitulo {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 
     .contextoDescricao {
-        font-size: 0.9rem;
-        line-height: 1.8;
+        font-size: 0.85rem;
+        line-height: 1.7;
     }
 
     .anoCard {
-        min-width: 200px;
-        height: 200px;
+        min-width: 160px;
+        height: 160px;
     }
 
     .anoCard h2 {
-        font-size: 3rem;
+        font-size: 2.2rem;
     }
 
     .videoSection {
-        margin-top: 3rem;
+        margin-top: 2.5rem;
         padding: 1.5rem;
         gap: 1.5rem;
     }
 
     .videoTitulo {
         font-size: 1.4rem;
-        margin-top: 1rem;
+        margin-top: 0;
     }
 
     .videoContainer iframe,
     .videoPlaceholder {
-        height: 350px;
-        border-radius: 18px;
-    }
-
-    .videoInfo {
-        padding-top: 1.5rem;
-        gap: 1.2rem;
+        height: 300px;
     }
 
     .videoInfo p {
-        font-size: 0.9rem;
-        max-width: 450px;
-        line-height: 1.6;
+        font-size: 0.85rem;
     }
 
     .btnPrincipal {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
+        padding: 0.8rem 1.4rem;
+        font-size: 0.82rem;
     }
 
     .autorSection {
-        margin-top: 4rem;
-        padding: 2rem;
-    }
-
-    .autorSection h2 {
-        font-size: 1.6rem;
-    }
-
-    .autorSection p {
-        font-size: 0.9rem;
-        line-height: 1.8;
-    }
-
-    .analiseSection {
-        gap: 1.2rem;
-    }
-
-    .analiseCard {
+        margin-top: 1.5rem;
         padding: 1.5rem;
     }
 
+    .autorSection h2 {
+        font-size: 1.4rem;
+    }
+
+    .autorSection p {
+        font-size: 0.85rem;
+        line-height: 1.7;
+    }
+
+    .analiseSection {
+        margin-top: 1rem;
+        gap: 1rem;
+    }
+
+    .analiseCard {
+        padding: 1.3rem;
+    }
+
     .analiseCard h3 {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .analiseCard p {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
+        line-height: 1.7;
     }
 }
 
@@ -645,61 +603,55 @@
 
 @media (max-width: 1024px) {
 
-    .obraPrincipal {
-        padding-top: 6rem;
-    }
-
     .titulo {
-        font-size: 5rem;
+        font-size: 4.5rem;
     }
 
     .bgTitulo {
-        width: 80%;
+        width: 85%;
     }
 
     .frase {
-        max-width: 400px;
-        font-size: 0.9rem;
+        max-width: 500px;
     }
 
     .resumoArea {
         flex-direction: column;
-        gap: 2rem;
+        align-items: center;
     }
 
     .capaLivro {
-        width: 280px;
-        min-width: 280px;
+        width: 260px;
+        min-width: 260px;
     }
 
     .infoLivro {
         flex-wrap: wrap;
     }
 
-    .personagensGrid {
-        justify-content: center;
+    .personagensHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
     }
 
     .contextoSection {
         flex-direction: column;
         text-align: center;
-        gap: 3rem;
     }
 
     .contextoTexto {
         align-items: center;
     }
 
-    .videoTitulo {
-        font-size: 1.8rem;
+    .anoCard {
+        width: 100%;
+        max-width: 220px;
     }
 
-    .videoContainer iframe {
-        height: 400px;
-    }
-
-    .autorSection {
-        padding: 2rem;
+    .videoContainer iframe,
+    .videoPlaceholder {
+        height: 320px;
     }
 
     .analiseSection {
@@ -718,159 +670,40 @@
         padding-top: 4rem;
     }
 
-    .titulo {
-        font-size: 3rem;
-        line-height: 1;
-    }
-
     .bgTitulo {
         width: 100%;
     }
 
+    .titulo {
+        font-size: 2.7rem;
+        line-height: 1;
+    }
+
     .infoTitulo {
-        margin-top: 2rem;
+        margin-top: 1.5rem;
         padding: 0 1rem;
     }
 
     .subtitulo {
-        font-size: 0.7rem;
-        letter-spacing: 3px;
+        font-size: 0.65rem;
+        letter-spacing: 2px;
     }
 
     .frase {
-        max-width: 100%;
         font-size: 0.85rem;
+        max-width: 100%;
     }
 
     .resumoArea {
         width: 95%;
-        margin-top: 4rem;
+        flex-direction: column;
+        margin-top: 3rem;
+        gap: 1.5rem;
     }
 
     .resumoCard {
-        padding: 1.5rem;
-    }
-
-    .resumoTitulo {
-        font-size: 1.1rem;
-    }
-
-    .resumoTexto {
-        font-size: 0.9rem;
-    }
-
-    .infoLivro {
-        flex-direction: column;
-    }
-
-    .capaLivro {
-        width: 220px;
-        min-width: 220px;
-        padding: 1rem;
-    }
-
-    .personagensSection {
-        margin-top: 4rem;
-    }
-
-    .personagensTitulo {
-        font-size: 1.5rem;
-    }
-
-    .personagensGrid {
-        gap: 1rem;
-    }
-
-    .contextoSection {
-        width: 95%;
-        padding: 2rem 1.5rem;
-        gap: 2rem;
-    }
-
-    .contextoTitulo {
-        font-size: 1.5rem;
-    }
-
-    .contextoDescricao {
-        font-size: 0.9rem;
-    }
-
-    .anoCard {
-        min-width: 180px;
-        height: 180px;
-    }
-
-    .anoCard h2 {
-        font-size: 2.5rem;
-    }
-
-    .videoSection {
-        width: 95%;
-        padding: 1.5rem;
-    }
-
-    .videoTitulo {
-        font-size: 1.5rem;
-        text-align: center;
-    }
-
-    .videoContainer iframe,
-    .videoPlaceholder {
-        height: 220px;
-    }
-
-    .videoInfo p {
-        font-size: 0.9rem;
-    }
-
-    .btnPrincipal {
         width: 100%;
-    }
-
-    .autorSection {
-        width: 95%;
-        padding: 2rem 1.5rem;
-    }
-
-    .autorSection h2 {
-        font-size: 1.6rem;
-    }
-
-    .autorSection p {
-        font-size: 0.9rem;
-    }
-
-    .analiseSection {
-        width: 95%;
-        gap: 1rem;
-    }
-
-    .analiseCard {
-        padding: 1.5rem;
-    }
-
-    .analiseCard h3 {
-        font-size: 1.2rem;
-    }
-
-    .analiseCard p {
-        font-size: 0.85rem;
-    }
-}
-
-
-/* ========================= */
-/* CELULAR PEQUENO */
-/* ========================= */
-
-@media (max-width: 480px) {
-
-    .titulo {
-        font-size: 6rem;
-    }
-
-    .frase {
-        font-size: 0.8rem;
+        padding: 1.3rem;
     }
 
     .resumoTitulo {
@@ -879,12 +712,57 @@
 
     .resumoTexto {
         font-size: 0.85rem;
+        line-height: 1.7;
     }
 
-    .contextoTitulo,
-    .videoTitulo,
-    .autorSection h2 {
-        font-size: 1.3rem;
+    .infoLivro {
+        flex-direction: column;
+    }
+
+    .capaLivro {
+        width: 200px;
+        min-width: 200px;
+        padding: 1rem;
+    }
+
+    .personagensSection {
+        width: 95%;
+        margin-top: 3rem;
+        gap: 1.5rem;
+    }
+
+    .personagensTitulo {
+        font-size: 1.4rem;
+    }
+
+    .scrollBtn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .personagensGrid {
+        gap: 1rem;
+    }
+
+    .contextoSection {
+        width: 95%;
+        flex-direction: column;
+        padding: 1.5rem;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .contextoTexto {
+        align-items: center;
+    }
+
+    .contextoTitulo {
+        font-size: 1.4rem;
+    }
+
+    .contextoDescricao {
+        font-size: 0.85rem;
+        line-height: 1.7;
     }
 
     .anoCard {
@@ -896,8 +774,94 @@
         font-size: 2rem;
     }
 
+    .videoSection {
+        width: 95%;
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .videoTitulo {
+        font-size: 1.3rem;
+        margin-top: 0;
+        text-align: center;
+    }
+
     .videoContainer iframe,
     .videoPlaceholder {
-        height: 180px;
+        height: 200px;
+        border-radius: 18px;
+    }
+
+    .videoInfo p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    .btnPrincipal {
+        width: 100%;
+        padding: 0.9rem;
+        font-size: 0.85rem;
+    }
+
+    .autorSection {
+        width: 95%;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+
+    .autorSection h2 {
+        font-size: 1.4rem;
+    }
+
+    .autorSection p {
+        font-size: 0.85rem;
+        line-height: 1.7;
+    }
+
+    .analiseSection {
+        width: 95%;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .analiseCard {
+        padding: 1.3rem;
+    }
+
+    .analiseCard h3 {
+        font-size: 1rem;
+    }
+
+    .analiseCard p {
+        font-size: 0.82rem;
+        line-height: 1.7;
+    }
+}
+
+
+/* ========================= */
+/* CELULAR PEQUENO */
+/* ========================= */
+
+@media (max-width: 480px) {
+
+    .titulo {
+        font-size: 2.1rem;
+    }
+
+    .frase {
+        font-size: 0.8rem;
+    }
+
+    .contextoTitulo,
+    .videoTitulo,
+    .autorSection h2,
+    .personagensTitulo {
+        font-size: 1.2rem;
+    }
+
+    .videoContainer iframe,
+    .videoPlaceholder {
+        height: 170px;
     }
 }

@@ -1,9 +1,8 @@
 import styles from "./ObraPrincipal.module.css";
 import { useEffect, useState, useRef } from "react";
-import { NavLink } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 import { FaChevronLeft, FaBookOpen, FaChevronRight } from "react-icons/fa";
-import { buscarLivros, buscarPersonagem, buscarCuriosidades, buscarSimulados } from "../../services/api"
+import { buscarLivros, buscarPersonagem} from "../../services/api"
 import CardPersonagem from "../../components/CardPersonagem/CardPersonagem"
 
 function ObraPrincipal({ idioma }) {
@@ -11,8 +10,6 @@ function ObraPrincipal({ idioma }) {
     const scrollRef = useRef(null);
     const [livro, setLivro] = useState(null)
     const [personagem, setPersonagem] = useState([]);
-    const [curiosidades, setCuriosidades] = useState([]);
-    const [simulados, setSimulados] = useState([]);
 
     function scrollLeft() {
         scrollRef.current.scrollBy({
@@ -44,18 +41,6 @@ function ObraPrincipal({ idioma }) {
                    await buscarPersonagem();
 
                 setPersonagem(personagemData);
-
-                //livro
-                const curiosidadesData =
-                   await buscarCuriosidades();
-
-               setCuriosidades(curiosidadesData);
-
-                //simulados
-                const simuladosData =
-                    await buscarSimulados();
-
-                setSimulados(simuladosData);
 
             }
 
