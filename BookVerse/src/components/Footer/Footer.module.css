@@ -54,3 +54,24 @@
     font-size: 0.85rem;
     font-family: "Manrope", sans-serif;
 }
+
+@media (max-width: 768px) {
+
+    .footer {
+        flex-direction: column;
+
+        height: auto;
+
+        gap: 0.8rem;
+
+        padding: 1.5rem 1rem;
+    }
+
+    .redes {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 1rem;
+    }
+}
