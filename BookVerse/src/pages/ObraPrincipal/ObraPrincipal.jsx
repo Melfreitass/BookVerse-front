@@ -207,6 +207,91 @@ function ObraPrincipal({ idioma }) {
 
 </section>
 
+<section className={styles.autorSection}>
+
+    <h2>
+        {
+            idioma === "pt"
+
+                ? "Sobre o Autor"
+
+                : "About the Author"
+        }
+    </h2>
+
+    <p>
+        {
+            idioma === "pt"
+
+                ? livro?.detalhes_autor_pt
+
+                : livro?.detalhes_autor_en
+        }
+    </p>
+
+</section>
+
+<section className={styles.analiseSection}>
+    <div className={styles.analiseCard}>
+        <h3>
+            {
+                idioma === "pt"
+
+                    ? "Estilo de Escrita"
+
+                    : "Writing Style"
+            }
+        </h3>
+
+        <p>
+            {
+                idioma === "pt"
+                ? livro?.estilo_escrita_pt
+                : livro?.estilo_escrita_en
+            }
+        </p>
+    </div>
+
+    <div className={styles.analiseCard}>
+        <h3>
+            {
+                idioma === "pt"
+                    ? "Verossimilhança"
+                    : "Verisimilitude"
+            }
+        </h3>
+
+        <p>
+           {
+                idioma === "pt"
+
+                    ? livro?.verossimilhanca_pt
+
+                    : livro?.verossimilhanca_en
+            } 
+        </p>
+    </div>
+
+    <div className={styles.analiseCard}>
+        <h3>
+            {
+                idioma === "pt"
+                ? "Características Literárias"
+                : "Literary Characteristics"
+            }
+        </h3>
+
+        <p>
+            {
+                idioma === "pt"
+                ? livro?.caracteristicas_literarias_pt
+
+                : livro?.caracteristicas_literarias_en
+            }
+        </p>
+    </div>
+</section>
+
       <section className={styles.videoSection}>
             <h2 className={styles.videoTitulo}>
                 {
