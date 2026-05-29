@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import Header from './components/Header/Header.jsx'
 import Footer from './components/Footer/Footer.jsx'
@@ -17,20 +17,28 @@ import Simulados from './pages/Simulados/Simulados.jsx'
 
 function App() {
 
-    const [idioma, setIdioma] = useState("pt")
+    const [idioma, setIdioma] = useState(() => {
+        return localStorage.getItem("idioma") || "pt";
+    });
+
+    useEffect(() => {
+        localStorage.setItem("idioma", idioma);
+    }, [idioma]);
+
+    console.log("Idioma atual:", idioma);
 
     return (
         <BrowserRouter>
             <Header idioma={idioma} setIdioma={setIdioma}/>
 
             <Routes>
-                <Route path="/sobre" element={<Sobre idioma={idioma}/>} />
-                <Route path="/dicas" element={<Dicas idioma={idioma}/>} />
-                <Route path="/" element={<Home idioma={idioma}/>} />
-                <Route path="/biblioteca" element={<Biblioteca idioma={idioma}/>} />
-                <Route path="/livro/:id" element={<DetalheLivro />} />
-                <Route path="/obraPrincipal" element={<ObraPrincipal idioma={idioma}/>} />
-                <Route path="/simulados" element={<Simulados idioma={idioma}/>} />
+                <Route path="/sobre" element={<Sobre idioma={idioma} setIdioma={setIdioma}/>} />
+                <Route path="/dicas" element={<Dicas idioma={idioma} setIdioma={setIdioma}/>} />
+                <Route path="/" element={<Home idioma={idioma} setIdioma={setIdioma}/>} />
+                <Route path="/biblioteca" element={<Biblioteca idioma={idioma} setIdioma={setIdioma}/>} />
+                <Route path="/livro/:id" element={<DetalheLivro idioma={idioma} setIdioma={setIdioma}/>} />
+                <Route path="/obraPrincipal" element={<ObraPrincipal idioma={idioma} setIdioma={setIdioma}/>} />
+                <Route path="/simulados" element={<Simulados idioma={idioma} setIdioma={setIdioma}/>} />
             </Routes>
 
             <Footer />
