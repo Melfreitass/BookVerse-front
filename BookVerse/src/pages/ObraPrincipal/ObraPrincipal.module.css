@@ -228,6 +228,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
+    padding: 3rem;
 }
 
 .contextoTexto {
@@ -638,6 +639,7 @@
     .contextoSection {
         flex-direction: column;
         text-align: center;
+        padding: 1rem;
     }
 
     .contextoTexto {
