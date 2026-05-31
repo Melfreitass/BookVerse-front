@@ -332,11 +332,11 @@ function ObraPrincipal({ idioma }) {
             <div className={styles.videoContainer}>
                 {
                     livro?.video_url ? (
-                        <inframe
+                        <iframe
                             src={livro.video_url}
                             title="Vídeo do livro"
                             allowFullScreen
-                            ></inframe>
+                            ></iframe>
                     ) : (
                         <div className={styles.videoPlaceholder}>
                             Carregando vídeo...
