@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import Header from './components/Header/Header.jsx'
 import Footer from './components/Footer/Footer.jsx'
@@ -17,7 +17,13 @@ import Simulados from './pages/Simulados/Simulados.jsx'
 
 function App() {
 
-    const [idioma, setIdioma] = useState("pt")
+    const [idioma, setIdioma] = useState(() => {
+        return localStorage.getItem("idioma") || "pt";
+    });
+
+    useEffect(() => {
+        localStorage.setItem("idioma", idioma);
+    }, [idioma]);
 
     return (
         <BrowserRouter>
