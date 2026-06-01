@@ -78,7 +78,7 @@ function Sobre({ idioma }) {
 
                             <p>
                                 {idioma === 'pt'
-                                    ? 'O BookVerse nasceu da união entre literatura e tecnologia, criando uma biblioteca virtual focada em tornar o aprendizado mais acessível, moderno e interativo. Nosso projeto conecta *Vidas Secas* a novas experiências digitais por meio da integração com outras obras literárias.'
+                                    ? 'O BookVerse nasceu da união entre literatura e tecnologia, criando uma biblioteca virtual focada em tornar o aprendizado mais acessível, moderno e interativo. Nosso projeto conecta Vidas Secas a novas experiências digitais por meio da integração com outras obras literárias.'
                                     : 'BookVerse was born from the union of literature and technology, creating a virtual library focused on making learning more accessible, modern, and interactive. Our project connects Vidas Secas to new digital experiences through integration with other literary works.'}
                             </p>
                         </div>
