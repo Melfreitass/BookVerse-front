@@ -89,6 +89,8 @@
     line-height: 1.5;
     font-size: 0.9rem;
     font-family: "Manrope", sans-serif;
+    text-align: justify;
+  text-indent: 2em;
 }
 
 .cardsLado {
@@ -349,6 +351,8 @@
     font-size: 0.95rem;
     max-width: 650px;
     font-family: "Manrope", sans-serif;
+    text-align: justify;
+  text-indent: 2em;
 }
 
 .loading {
