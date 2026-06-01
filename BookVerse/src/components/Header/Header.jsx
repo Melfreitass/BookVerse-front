@@ -2,6 +2,14 @@ import styles from './Header.module.css';
 import { NavLink } from 'react-router-dom';
 
 function Header({ idioma, setIdioma}) {
+
+    const textos =  {
+        sobre: idioma === "pt" ? "Sobre" : "About",
+        biblioteca: idioma === "pt" ? "Biblioteca" : "Library",
+        simulado: idioma === "pt" ? "Simulados" : "Quizzes",
+        dicas: idioma === "pt" ? "Dicas" : "Tips"
+    };
+
     return (
         <header className={styles.header}>
             <div className={styles.titulo}>
@@ -17,7 +25,7 @@ function Header({ idioma, setIdioma}) {
                         className={({ isActive }) =>
                             isActive ? `${styles.anav} ${styles.active}` : styles.anav
                         }>
-                        Sobre
+                        {textos.sobre}
                     </NavLink>
 
                     <NavLink
@@ -25,7 +33,7 @@ function Header({ idioma, setIdioma}) {
                         className={({ isActive }) =>
                             isActive ? `${styles.anav} ${styles.active}` : styles.anav
                         }>
-                        Biblioteca
+                        {textos.biblioteca}
                     </NavLink>
 
                     <NavLink
@@ -33,7 +41,7 @@ function Header({ idioma, setIdioma}) {
                         className={({ isActive }) =>
                             isActive ? `${styles.anav} ${styles.active}` : styles.anav
                         }>
-                        Simulados
+                        {textos.simulado}
                     </NavLink>
 
                     <NavLink
@@ -41,7 +49,7 @@ function Header({ idioma, setIdioma}) {
                         className={({ isActive }) =>
                             isActive ? `${styles.anav} ${styles.active}` : styles.anav
                         }>
-                        Dicas
+                        {textos.dicas}
                     </NavLink>
                 </nav>
             </div>
