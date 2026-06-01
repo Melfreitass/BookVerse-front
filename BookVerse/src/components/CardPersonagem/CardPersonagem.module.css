@@ -5,14 +5,14 @@
     border-radius: 24px;
     overflow: hidden;
     background: rgba(20, 30, 50, 0.72);
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     flex-shrink: 0;
     transition: 0.3s;
 }
 
 .card:hover {
     transform: translateY(-6px);
-    border-color: rgba(239,104,85,0.35);
+    border-color: rgba(239, 104, 85, 0.35);
 }
 
 .imagem {
@@ -32,24 +32,26 @@
 .nome {
     color: aliceblue;
     font-size: 1.1rem;
-    font-family: "Noto Serif", serif;
+    font-family: 'Noto Serif', serif;
     transition: 0.3s;
 }
 
 .card:hover .nome {
-    color: #EF6855;
+    color: #ef6855;
 }
 
 .papel {
-    color: #EF6855;
-    font-family: "Manrope", sans-serif;
+    color: #ef6855;
+    font-family: 'Manrope', sans-serif;
     font-size: 0.9rem;
 }
 
 .descricao {
-    color:aliceblue;
-    font-family: "Manrope", sans-serif;
+    color: aliceblue;
+    font-family: 'Manrope', sans-serif;
     font-size: 0.8rem;
-    line-height: 1.7;
     margin-top: 0.3rem;
+    text-align: justify;
+    text-indent: 2em;
+    line-height: 1.6;
 }
