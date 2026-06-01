@@ -40,13 +40,6 @@ function Biblioteca() {
         <div className={styles.page}>
             <main className={styles.main}>
                 <section className={styles.topo}>
-                    <div className={styles.filtros}>
-                        <div className={styles.filtro}>
-                            <span>AUTOR</span>
-
-                            <button>Todos os Autores</button>
-                        </div>
-                    </div>
 
                     <div className={styles.banner}>
                         <h2>
