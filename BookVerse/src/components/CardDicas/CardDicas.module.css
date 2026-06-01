@@ -14,7 +14,7 @@
 
 .titulo {
     color: white;
-    font-size: 28px;
+    font-size: 24px;
     margin: 16px 0;
     font-family: 'Noto Serif', serif;
 }
@@ -22,5 +22,7 @@
 .conteudo {
     color: #c8c8d0;
     line-height: 1.7;
-    font-size: 1.1rem;
+    font-size: 15px;
+        text-align: justify;
+  text-indent: 2em;
 }
