@@ -22,13 +22,11 @@
 
 .banner {
     flex: 1;
-    background: linear-gradient(135deg,
-            rgba(18, 28, 49, 0.95),
-            rgba(11, 19, 34, 0.95));
+    background: linear-gradient(135deg,rgba(18, 28, 49, 0.95),rgba(11, 19, 34, 0.95));
     border-radius: 18px;
     padding: 2rem;
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -44,12 +42,11 @@
 
 .gridLivros {
     width: 100%;
-    max-width: 920px;
     margin: 3.5rem auto 0;
     display: grid;
-    grid-template-columns: repeat(3, 260px);
-    justify-content: center;
-    gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    justify-items: center;
 }
 
 .cardLivro {
@@ -112,24 +109,93 @@
     color: inherit;
 }
 
-@media (max-width: 1000px) {
-    .topo {
-        flex-direction: column;
+.loading {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: "Manrope", sans-serif;
+    text-align: center;
+}
+
+/* Notebook */
+@media (max-width: 1200px) {
+    .gridLivros {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
     }
 
-    .banner h2 {
-        font-size: 1.4rem;
+    .cardLivro {
+        width: 260px;
     }
 }
 
+/* Tablets */
 @media (max-width: 768px) {
     .main {
         padding: 2rem 1rem 3rem;
     }
 
-    .nav {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
+    .topo {
+        flex-direction: column;
+    }
+
+    .banner {
+        padding: 1.5rem;
+    }
+
+    .banner h2 {
+        font-size: 1.3rem;
+    }
+
+    .gridLivros {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .cardLivro {
+        width: 220px;
+        height: 350px;
+    }
+
+    .imagemContainer {
+        height: 280px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+    .banner h2 {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+
+    .gridLivros {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .cardLivro {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+    }
+
+    .imagemContainer {
+        height: 320px;
+    }
+
+    .cardConteudo {
+        padding: 0.8rem;
+    }
+
+    .cardConteudo h3 {
+        font-size: 0.95rem;
+    }
+
+    .cardConteudo p {
+        font-size: 0.7rem;
     }
 }
