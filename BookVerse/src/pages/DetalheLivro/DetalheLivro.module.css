@@ -28,7 +28,7 @@
     flex-shrink: 0;
 }
 
-.capa {
+.capa_url {
     width: 360px;
     height: 540px;
     object-fit: cover;

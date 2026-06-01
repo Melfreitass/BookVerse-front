@@ -13,12 +13,23 @@ function Biblioteca() {
             try {
                 const resposta = await buscarBibliotecaIntegrada();
 
-                const livrosFormatados = resposta.flatMap((livro) => livro.conteudo);
+                // CORREÇÃO AQUI: Em vez de destruir a raiz com flatMap, criamos uma lista unificada
+                const livrosFormatados = resposta.map((item) => {
+           
+                    const interno = Array.isArray(item.conteudo) ? item.conteudo[0] : [];
+
+                    return {
+                        id: item.id, 
+                        statusApi: item.statusApi || 'Online',
+                        titulo: interno?.titulo || item.livro || 'Sem título',
+                        capa_url: interno?.capa_url || null,
+                        autor: interno?.autor || 'Autor Indisponível'
+                    };
+                });
 
                 setLivros(livrosFormatados);
             } catch (error) {
                 console.error(error);
-
                 setErro(true);
             } finally {
                 setLoading(false);
@@ -40,7 +51,6 @@ function Biblioteca() {
         <div className={styles.page}>
             <main className={styles.main}>
                 <section className={styles.topo}>
-
                     <div className={styles.banner}>
                         <h2>
                             Explore as obras mais relevantes da literatura acadêmica e clássica.
@@ -49,32 +59,42 @@ function Biblioteca() {
                 </section>
 
                 <section className={styles.gridLivros}>
-                    {livros.map((livro, index) => (
-                        <Link
-                            to={`/livro/${livro.id || index}`}
-                            key={index}
-                            className={styles.linkCard}>
-                            <div className={styles.cardLivro}>
-                                <div className={styles.imagemContainer}>
-                                    <img
-                                        src={livro.capa_url || '/capas/livroPadrao.png'}
-                                        alt={livro.titulo}
-                                        className={styles.imagemLivro}
-                                    />
-                                </div>
+                    {livros.map((livro, index) => {
+            
+                        const obterNomeAutorCard = () => {
+                            if (!livro.autor) return 'Autor não informado';
+                            if (Array.isArray(livro.autor)) return livro.autor[0]?.nome || 'Autor não informado';
+                            if (typeof livro.autor === 'object') return livro.autor.nome || 'Autor não informado';
+                            return livro.autor;
+                        };
 
-                                <div className={styles.cardConteudo}>
-                                    <h3>{livro.titulo}</h3>
+                        return (
+                            <Link
+                                to={`/livro/${livro.id}`} // Removido o '|| index' -> Agora envia o ID real perfeitamente!
+                                key={livro.id || index}
+                                className={styles.linkCard}
+                            >
+                                <div className={styles.cardLivro}>
+                                    <div className={styles.imagemContainer}>
+                                        <img
+                                            src={livro.capa_url || '/capas/livroPadrao.png'}
+                                            alt={livro.titulo}
+                                            className={styles.imagemLivro}
+                                        />
+                                    </div>
 
-                                    <p>{livro.autor?.nome}</p>
+                                    <div className={styles.cardConteudo}>
+                                        <h3>{livro.titulo}</h3>
+                                        <p>{obterNomeAutorCard()}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </Link>
-                    ))}
+                            </Link>
+                        );
+                    })}
                 </section>
             </main>
         </div>
     );
 }
 
-export default Biblioteca;
+export default Biblioteca;  
