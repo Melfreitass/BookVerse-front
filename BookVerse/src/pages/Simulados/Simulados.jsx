@@ -28,14 +28,16 @@ function Simulados({ idioma }) {
         carregarDados();
     }, []);
 
-    const responderQuestao = (idQuestao, resposta) => {
-        setRespostas((prev) => ({
-            ...prev,
-            [idQuestao]: resposta,
-        }));
+   const responderQuestao = (idQuestao, resposta) => {
+    if (respostas[idQuestao]) return;
 
-        setQuestoesPendentes((prev) => prev.filter((q) => q.id !== idQuestao));
-    };
+    setRespostas((prev) => ({
+        ...prev,
+        [idQuestao]: resposta,
+    }));
+
+    setQuestoesPendentes((prev) => prev.filter((q) => q.id !== idQuestao));
+};
 
     const totalAcertos = Object.values(respostas).filter((item) => item.acertou).length;
 
@@ -45,19 +47,32 @@ function Simulados({ idioma }) {
         simulados.length > 0 ? Math.round((totalAcertos / simulados.length) * 100) : 0;
 
     const tentarFinalizar = () => {
-        const pendentes = simulados
-            .map((q, index) => ({
-                id: q.id,
-                index,
-            }))
-            .filter((q) => !respostas[q.id]);
+    const pendentes = simulados
+        .map((q, index) => ({
+            id: q.id,
+            index,
+        }))
+        .filter((q) => !respostas[q.id]);
 
-        if (pendentes.length > 0) {
-            setQuestoesPendentes(pendentes);
-        } else {
-            setConcluido(true);
-        }
-    };
+    if (pendentes.length > 0) {
+        setQuestoesPendentes(pendentes);
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+
+        document.body.classList.add('shake');
+
+        setTimeout(() => {
+            document.body.classList.remove('shake');
+        }, 500);
+
+        return;
+    }
+
+    setConcluido(true);
+};
 
     if (erro)
         return (
