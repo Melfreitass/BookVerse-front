@@ -13,7 +13,8 @@ function DetalheLivro() {
     useEffect(() => {
         if (!id) return;
 
-    
+        
+
 
         async function carregarLivro() {
             try {
@@ -27,8 +28,8 @@ function DetalheLivro() {
 
                     if (livroEncontrado) {
                         // 2. Extrai o conteúdo secundário de dentro do array com segurança
-                        const interno = Array.isArray(livroEncontrado.conteudo) 
-                            ? livroEncontrado.conteudo[0] 
+                        const interno = Array.isArray(livroEncontrado.conteudo)
+                            ? livroEncontrado.conteudo[0]
                             : livroEncontrado.conteudo;
 
                         // 3. Monta o estado unificado deixando os dados "planos" para as suas tags lerem
