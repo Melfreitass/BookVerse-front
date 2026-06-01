@@ -7,17 +7,20 @@
 
 .categoria {
     color: #ef6855;
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 1px;
+    font-family: 'Noto Serif', serif;
 }
 
 .titulo {
     color: white;
-    font-size: 22px;
+    font-size: 28px;
     margin: 16px 0;
+    font-family: 'Noto Serif', serif;
 }
 
 .conteudo {
     color: #c8c8d0;
     line-height: 1.7;
+    font-size: 1.1rem;
 }

@@ -42,6 +42,8 @@
     color: #dfbfba;
     font-size: 1.1rem;
     line-height: 1.8;
+    text-align: justify;
+  text-indent: 2em;
 }
 
 .img {
@@ -71,13 +73,15 @@
 .info h3 {
     color: #d3e4fe;
     margin-bottom: 0.8rem;
-    font-size: 1.8rem;
+    font-size: 2.8rem;
+    font-family: 'Noto Serif', serif;
 }
 
 .info p {
     color: #dfbfba;
     max-width: 44rem;
     margin: 0 auto;
+    font-size: 1.1rem;
 }
 
 .cards {
@@ -107,6 +111,7 @@
     max-width: 44rem;
     margin: 0 auto;
     line-height: 1.8;
+    font-size: 1.1rem;
 }
 
 .temasGrid {
@@ -133,6 +138,7 @@
 
 .tituloCentro p {
     color: #dfbfba;
+    font-size: 1.1rem;
 }
 
 .curiosidadesGrid {
