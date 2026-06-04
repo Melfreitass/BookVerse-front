@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Manrope:wght@200..800&display=swap');
 
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -8,6 +13,7 @@
     padding-right: 40px;
     padding-left: 40px;
     border-bottom: 1.4px solid rgba(240, 248, 255, 0.2);
+    background-color: #0D1222;
 }
 
 .titulo {
