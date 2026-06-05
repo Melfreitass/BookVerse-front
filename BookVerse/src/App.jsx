@@ -32,7 +32,7 @@ function App() {
                 <Route path="/dicas" element={<Dicas idioma={idioma}/>} />
                 <Route path="/" element={<Home idioma={idioma}/>} />
                 <Route path="/biblioteca" element={<Biblioteca idioma={idioma}/>} />
-                <Route path="/livro/:id" element={<DetalheLivro />} />
+                <Route path="/livro/:id" element={<DetalheLivro idioma={idioma} />} />
                 <Route path="/obraPrincipal" element={<ObraPrincipal idioma={idioma}/>} />
                 <Route path="/simulados" element={<Simulados idioma={idioma}/>} />
             </Routes>

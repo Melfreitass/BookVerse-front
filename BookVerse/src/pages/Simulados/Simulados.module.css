@@ -199,6 +199,10 @@ body {
     transition: 0.3s;
 }
 
+.botaoRefazer {
+    margin-top: 1.5rem; /* ajuste o valor como quiser */
+}
+
 .botaoRefazer:hover,
 .btnPrincipal:hover {
     transform: translateY(-2px);

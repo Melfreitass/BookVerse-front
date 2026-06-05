@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { buscarBibliotecaIntegrada } from '../../services/api';
 
-function Biblioteca() {
+function Biblioteca({ idioma }) {
     const [livros, setLivros] = useState([]);
     const [loading, setLoading] = useState(true);
     const [erro, setErro] = useState(false);
@@ -13,17 +13,19 @@ function Biblioteca() {
             try {
                 const resposta = await buscarBibliotecaIntegrada();
 
-                // CORREÇÃO AQUI: Em vez de destruir a raiz com flatMap, criamos uma lista unificada
                 const livrosFormatados = resposta.map((item) => {
-           
-                    const interno = Array.isArray(item.conteudo) ? item.conteudo[0] : [];
+                    const interno = Array.isArray(item.conteudo)
+                        ? item.conteudo[0]
+                        : [];
 
                     return {
-                        id: item.id, 
+                        id: item.id,
                         statusApi: item.statusApi || 'Online',
-                        titulo: interno?.titulo || item.livro || 'Sem título',
+                        titulo: interno?.titulo || item.livro || (idioma === 'pt' ? 'Sem título' : 'Untitled'),
                         capa_url: interno?.capa_url || null,
-                        autor: interno?.autor || 'Autor Indisponível'
+                        autor: interno?.autor || (idioma === 'pt'
+                            ? 'Autor Indisponível'
+                            : 'Author Unavailable')
                     };
                 });
 
@@ -37,14 +39,26 @@ function Biblioteca() {
         }
 
         carregarLivros();
-    }, []);
+    }, [idioma]);
 
     if (loading) {
-        return <div className={styles.loading}>Carregando biblioteca...</div>;
+        return (
+            <div className={styles.loading}>
+                {idioma === 'pt'
+                    ? 'Carregando biblioteca...'
+                    : 'Loading library...'}
+            </div>
+        );
     }
 
     if (erro) {
-        return <div className={styles.loading}>Erro ao carregar biblioteca.</div>;
+        return (
+            <div className={styles.loading}>
+                {idioma === 'pt'
+                    ? 'Erro ao carregar biblioteca.'
+                    : 'Error loading library.'}
+            </div>
+        );
     }
 
     return (
@@ -53,24 +67,47 @@ function Biblioteca() {
                 <section className={styles.topo}>
                     <div className={styles.banner}>
                         <h2>
-                            Explore as obras mais relevantes da literatura acadêmica e clássica.
+                            {idioma === 'pt'
+                                ? 'Explore as obras mais relevantes da literatura acadêmica e clássica.'
+                                : 'Explore the most relevant works of academic and classical literature.'}
                         </h2>
                     </div>
                 </section>
 
                 <section className={styles.gridLivros}>
                     {livros.map((livro, index) => {
-            
+
                         const obterNomeAutorCard = () => {
-                            if (!livro.autor) return 'Autor não informado';
-                            if (Array.isArray(livro.autor)) return livro.autor[0]?.nome || 'Autor não informado';
-                            if (typeof livro.autor === 'object') return livro.autor.nome || 'Autor não informado';
+                            if (!livro.autor) {
+                                return idioma === 'pt'
+                                    ? 'Autor não informado'
+                                    : 'Author not informed';
+                            }
+
+                            if (Array.isArray(livro.autor)) {
+                                return (
+                                    livro.autor[0]?.nome ||
+                                    (idioma === 'pt'
+                                        ? 'Autor não informado'
+                                        : 'Author not informed')
+                                );
+                            }
+
+                            if (typeof livro.autor === 'object') {
+                                return (
+                                    livro.autor.nome ||
+                                    (idioma === 'pt'
+                                        ? 'Autor não informado'
+                                        : 'Author not informed')
+                                );
+                            }
+
                             return livro.autor;
                         };
 
                         return (
                             <Link
-                                to={`/livro/${livro.id}`} // Removido o '|| index' -> Agora envia o ID real perfeitamente!
+                                to={`/livro/${livro.id}`}
                                 key={livro.id || index}
                                 className={styles.linkCard}
                             >
@@ -97,4 +134,4 @@ function Biblioteca() {
     );
 }
 
-export default Biblioteca;  
+export default Biblioteca;

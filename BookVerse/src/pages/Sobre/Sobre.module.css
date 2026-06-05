@@ -283,6 +283,14 @@
     font-family: "Manrope", sans-serif;
 }
 
+.cardCurso {
+    color: #EF6855;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 0.4rem;
+}
+
 .integracaoSection {
     margin-top: 3.5rem;
     display: flex;
