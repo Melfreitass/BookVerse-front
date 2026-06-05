@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-
+import styles from './App.module.css';
 import { useState, useEffect } from "react"
 
 import Header from './components/Header/Header.jsx'
@@ -27,6 +27,7 @@ function App() {
         <BrowserRouter>
             <Header idioma={idioma} setIdioma={setIdioma}/>
 
+            <main className={styles.conteudo}>
             <Routes>
                 <Route path="/sobre" element={<Sobre idioma={idioma}/>} />
                 <Route path="/dicas" element={<Dicas idioma={idioma}/>} />
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/obraPrincipal" element={<ObraPrincipal idioma={idioma}/>} />
                 <Route path="/simulados" element={<Simulados idioma={idioma}/>} />
             </Routes>
+            </main>
 
             <Footer />
 

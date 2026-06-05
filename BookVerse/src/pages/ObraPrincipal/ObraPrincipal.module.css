@@ -119,6 +119,30 @@
     text-indent: 2em;
 }
 
+.btnLerMais {
+    background: rgba(239, 104, 85, 0.12);
+    border: 1px solid rgba(239, 104, 85, 0.3);
+
+    color: #EF6855;
+
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    margin-top: 0.8rem;
+
+    transition: 0.3s;
+}
+
+.btnLerMais:hover {
+    background: rgba(239, 104, 85, 0.2);
+    transform: translateY(-2px);
+}
+
 .infoLivro {
     display: flex;
     gap: 1rem;
@@ -343,6 +367,7 @@
     gap: 2rem;
 }
 
+
 .videoInfo p {
     color: rgba(255, 255, 255, 0.7);
     text-align: center;
@@ -445,6 +470,55 @@
     font-size: 0.9rem;
     text-align: justify;
   text-indent: 2em;
+}
+
+.conclusaoSection {
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 2rem;
+
+    background: rgba(20, 30, 50, 0.72);
+
+    border-radius: 28px;
+    padding: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: 0.3s;
+}
+
+.conclusaoSection:hover {
+    transform: translateY(-4px);
+
+    border: 1px solid rgba(239, 104, 85, 0.25);
+}
+
+.conclusaoTitulo {
+    color: white;
+    font-size: 2rem;
+    font-family: 'Noto Serif', serif;
+    font-weight: 600;
+}
+
+.conclusaoSubtitulo {
+    color: rgba(239, 104, 85, 0.85);
+
+    font-size: 0.85rem;
+    font-family: 'Manrope', sans-serif;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.conclusaoTexto {
+    color: rgba(255, 255, 255, 0.72);
+
+    line-height: 2;
+    font-size: 1rem;
+    font-family: 'Manrope', sans-serif;
 }
 
 @media (max-width: 1366px) {
@@ -607,6 +681,24 @@
         font-size: 0.82rem;
         line-height: 1.7;
     }
+
+   .conclusaoSection {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+}
+
+.conclusaoTitulo {
+    font-size: 2rem;
+}
+
+.conclusaoSubtitulo {
+    font-size: 0.8rem;
+}
+
+.conclusaoTexto {
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
 }
 
 /* ========================= */
@@ -670,6 +762,15 @@
     .analiseSection {
         grid-template-columns: 1fr;
     }
+
+    .conclusaoSection {
+    width: 92%;
+    padding: 2rem;
+}
+
+.conclusaoTitulo {
+    font-size: 2rem;
+}
 }
 
 /* ========================= */
@@ -847,6 +948,25 @@
         font-size: 0.82rem;
         line-height: 1.7;
     }
+
+   .conclusaoSection {
+    width: 95%;
+    padding: 1.5rem;
+    gap: 1rem;
+}
+
+.conclusaoTitulo {
+    font-size: 1.4rem;
+}
+
+.conclusaoSubtitulo {
+    font-size: 0.75rem;
+}
+
+.conclusaoTexto {
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
 }
 
 /* ========================= */
@@ -874,4 +994,12 @@
          width: 100%;
        height: 100%;
     }
+    
+.conclusaoSubtitulo {
+    font-size: 0.7rem;
+}
+
+.conclusaoTexto {
+    font-size: 0.8rem;
+}
 }
