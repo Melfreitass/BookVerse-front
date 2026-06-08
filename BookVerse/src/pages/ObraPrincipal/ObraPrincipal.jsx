@@ -251,7 +251,7 @@ function ObraPrincipal({ idioma }) {
         <div className={styles.videoContainer}>
           {livro?.video_url ? (
             <iframe
-              src="https://www.youtube.com/embed/3shsFZRYfN0"
+                src={livro?.video_url}
               title="Vídeo do livro"
               allowFullScreen
             ></iframe>
